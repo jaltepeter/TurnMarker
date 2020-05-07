@@ -27,7 +27,9 @@ Defines in milliseconds how often the animation should apply a rotation. The low
 Defines in degrees how much the marker should rotate on each tick.
 #### Marker Image
 Select from a number of included images provided by the Foundry Community:
+
 Marker images by [Rin](https://foundryvtt.com/community/rin)
+
 |Runes of the Cultist |Runes of Regeneration |Runes of the Cosmos |Runes of Earthly Dust |
 |--|--|--|--|
 |<img src="turnmarker/images/cultist.png" width="150" />|<img src="turnmarker/images/regeneration.png" width="150" />|<img src="turnmarker/images/cosmos.png" width="150" />|<img src="turnmarker/images/earthlydust.png" width="150" />|
