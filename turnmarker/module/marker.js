@@ -1,5 +1,6 @@
 import { Settings } from './settings.js';
 import { findTokenById } from './utils.js';
+import { MarkerAnimation } from './markeranimation.js';
 
 /**
  * Provides functionality for creating, moving, and animating the turn marker
@@ -12,7 +13,7 @@ export class Marker {
      * @param {Object} animator - The animator object
      * @param {String} markerId - The ID of the tile being used as the turn marker
      */
-    static async placeMarker(tokenId, animator, markerId) {
+    static async placeMarker(tokenId, markerId) {
         if (!markerId) {
             this.clearAllMarkers();
 
@@ -25,7 +26,6 @@ export class Marker {
                 height: token.h * ratio,
                 x: token.center.x - ((token.w * ratio) / 2),
                 y: token.center.y - ((token.h * ratio) / 2),
-                z: 0,
                 rotation: 0,
                 hidden: token.data.hidden,
                 locked: false,
@@ -33,13 +33,12 @@ export class Marker {
             });
 
             let tile = await canvas.scene.createEmbeddedEntity('Tile', newTile.data);
+            tile.displayToFront();
 
-            if (Settings.shouldAnimate()) { animator = this.startAnimation(animator, tile._id); }
-
-            return { animator: animator, markerId: tile._id };
+            return tile._id;
         } else {
             this.moveMarkerToToken(tokenId, markerId);
-            return { animator: animator, markerId: markerId };
+            return markerId;
         }
     }
 
@@ -48,11 +47,11 @@ export class Marker {
      * @param {String} tokenId - The ID of the token that the marker should be placed under
      * @param {String} markerId - The ID of the tile currently serving as the turn marker
      */
-    static moveMarkerToToken(tokenId, markerId) {
+    static async moveMarkerToToken(tokenId, markerId) {
         let token = findTokenById(tokenId);
         let ratio = Settings.getRatio();
 
-        canvas.scene.updateEmbeddedEntity('Tile', {
+        await canvas.scene.updateEmbeddedEntity('Tile', {
             _id: markerId,
             width: token.w * ratio,
             height: token.h * ratio,
@@ -60,6 +59,10 @@ export class Marker {
             y: token.center.y - ((token.h * ratio) / 2),
             hidden: token.data.hidden
         });
+
+        let tile = canvas.tiles.placeables.find(t => t.id == markerId);
+        tile.displayToFront();
+
     }
 
     /**
@@ -75,33 +78,13 @@ export class Marker {
         }
     }
 
-    /**
-     * Starts the animation loop for the specified tile
-     * @param {object} animator - The animator object
-     * @param {String} tileId - The ID of the tile currently serving as the turn marker 
-     */
-    static startAnimation(animator, tileId) {
-        clearInterval(animator);
-        return setInterval(function () { Marker.rotateMarker(tileId); }, Settings.getInterval());
-    }
+    static updateImagePath() {
+        let tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
 
-    /**
-     * Stops the current animation loop
-     * @param {Object} animator - The animator
-     */
-    static stopAnimation(animator) {
-        clearInterval(animator);
-    }
-
-    /**
-     * Rotates the specified tile by a number of degrees defined in settings
-     * @param {String} tileId - The ID of the tile currently serving as the turn marker
-     */
-    static rotateMarker(tileId) {
-        let t = canvas.scene.getEmbeddedEntity('Tile', tileId);
-        if (t) {
-            canvas.scene.updateEmbeddedEntity('Tile', { _id: tileId, rotation: t.rotation + Settings.getDegrees() });
-        }
+        canvas.scene.updateEmbeddedEntity('Tile', {
+            _id: tile.id,
+            img: Settings.getImagePath()
+        });
     }
 
     /**
@@ -109,8 +92,7 @@ export class Marker {
      * @param {Object} animator - The animator object
      */
     static reset(animator) {
-        clearInterval(animator);
+        MarkerAnimation.stopAnimation(animator);
         this.clearAllMarkers();
     }
-
 }

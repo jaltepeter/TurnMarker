@@ -1,4 +1,5 @@
 import { modName } from './utils.js';
+import { Marker } from './marker.js';
 
 /**
  * Provides functionality for reading and writing module settings
@@ -24,13 +25,6 @@ export class Settings {
      */
     static getInterval() {
         return game.settings.get(modName, 'interval');
-    }
-
-    /**
-     * Gets the animation rotation in degrees
-     */
-    static getDegrees() {
-        return game.settings.get(modName, 'degrees');
     }
 
     /**
@@ -74,32 +68,20 @@ export class Settings {
 
         game.settings.register(modName, 'animation', {
             name: 'Animate Marker?',
-            hint: 'Use rotation animation on marker.',
-            scope: 'world',
+            hint: 'Use rotation animation on marker. (changes may not be visible until a new combat is started)',
+            scope: 'user',
             config: true,
             type: Boolean,
             default: true,
-            restricted: true
         });
 
         game.settings.register(modName, 'interval', {
             name: 'Animation Speed',
-            hint: 'How fast to animate in ms (lower number is faster, higher is slower)',
-            scope: 'world',
+            hint: 'How fast to animate the rotation if enabled (recommended between 50 and 200)',
+            scope: 'user',
             config: true,
             type: Number,
-            default: 500,
-            restricted: true
-        });
-
-        game.settings.register(modName, 'degrees', {
-            name: 'Animation Degrees',
-            hint: 'How many degrees to rotate the marker per tick of "Animation Speed"',
-            scope: 'world',
-            config: true,
-            type: Number,
-            default: 10,
-            restricted: true
+            default: 100
         });
 
         game.settings.register(modName, 'image', {
@@ -122,12 +104,13 @@ export class Settings {
                 'Runes of Prosperity by Rin'
 
             ],
-            restricted: true
+            restricted: true,
+            onChange: value => Marker.updateImagePath(value)
         });
 
         game.settings.register(modName, 'customimage', {
             name: 'Custom Image Path',
-            hint: 'Use a custom image instead (leave blank to use a built in image',
+            hint: 'Use a custom image instead (leave blank to use a built in image)',
             scope: 'world',
             config: true,
             type: String,
