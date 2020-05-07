@@ -7,7 +7,7 @@ let markerId;
 Hooks.on('ready', async () => {
     Settings.registerSettings();
     let marker = canvas.scene.getEmbeddedCollection('Tile').find(t => t.flags.turnMarker == true);
-    if (marker && marker._id) {
+    if (marker && marker._id && game.user.isGM) {
         if (!game.paused && Settings.shouldAnimate()) {
             animator = Marker.startAnimation(animator, marker._id);
             markerId = marker._id;
@@ -29,7 +29,9 @@ Hooks.on('deleteCombat', async (x, y, z) => {
 });
 
 Hooks.on('updateToken', (scene, updateToken, updateData) => {
-    if ((updateData.x || updateData.y || updateData.width || updateData.height) && game.combat.combatant.tokenId == updateToken._id && game.user.isGM) {
+    if ((updateData.x || updateData.y || updateData.width || updateData.height || updateData.hidden) &&
+        game.combat.combatant.tokenId == updateToken._id && game.user.isGM) {
+
         Marker.moveMarkerToToken(updateToken._id, markerId);
     }
 });
