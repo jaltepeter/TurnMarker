@@ -26,7 +26,20 @@ Defines in milliseconds how often the animation should apply a rotation. The low
 #### Animation Degrees
 Defines in degrees how much the marker should rotate on each tick.
 #### Marker Image
-Select from a number of included images provided by the Foundry Community
+Select from a number of included images provided by the Foundry Community:
+
+|Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|
+|--|--|--|--|
+|<img src="turnmarker/images/orange.png" width="200" />|<img src="turnmarker/images/orange.png" width="200" />|<img src="turnmarker/images/orange.png" width="200" />|<img src="turnmarker/images/orange.png" width="200" />|
+
+|Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|
+|--|--|--|--|
+|<img src="turnmarker/images/orange.png" width="200" />|<img src="turnmarker/images/orange.png" width="200" />|<img src="turnmarker/images/orange.png" width="200" />|<img src="turnmarker/images/orange.png" width="200" />|
+
+|Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|
+|--|--|--|
+|<img src="turnmarker/images/orange.png" width="200" />|<img src="turnmarker/images/orange.png" width="200" />|<img src="turnmarker/images/orange.png" width="200" />|
+
 #### Custom Image Path
 Sets the path to an image to be used instead of the included images
 
