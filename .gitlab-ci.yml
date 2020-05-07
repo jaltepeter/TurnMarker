@@ -1,0 +1,20 @@
+image: "ruby:2.5"
+before_script:
+  - apt-get update -qy
+  - apt-get -y install zip unzip
+
+stages:
+  - build
+
+build:
+  stage: build
+  script:
+    - zip turnmarker.zip -r turnmarker -x ".*"
+  artifacts:
+    name: turnmarker
+    when: on_success
+    paths:
+      - turnmarker.zip
+  when: on_success
+  only:
+    - tags
