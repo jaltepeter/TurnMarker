@@ -10,7 +10,6 @@
         "turnmarker.js"
     ],
     "scripts": [],
-    "socket": true,
     "url": "https://gitlab.com/brunhine/foundry-turnmarker",
     "manifest": "https://gitlab.com/brunhine/foundry-turnmarker/raw/master/turnmarker/module.json",
     "download": "https://gitlab.com/brunhine/foundry-turnmarker/-/jobs/artifacts/1.0/raw/turnmarker.zip?job=build"

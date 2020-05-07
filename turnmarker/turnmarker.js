@@ -10,6 +10,7 @@ Hooks.on('ready', async () => {
     if (marker && marker._id) {
         if (!game.paused && Settings.shouldAnimate()) {
             animator = Marker.startAnimation(animator, marker._id);
+            markerId = marker._id;
         }
     }
 });
