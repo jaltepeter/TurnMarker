@@ -1,47 +1,60 @@
 import { Settings } from './module/settings.js';
 import { Marker } from './module/marker.js';
+import { MarkerAnimation } from './module/markeranimation.js';
 
 let animator;
 let markerId;
 
 Hooks.on('ready', async () => {
     Settings.registerSettings();
-    let marker = canvas.scene.getEmbeddedCollection('Tile').find(t => t.flags.turnMarker == true);
-    if (marker && marker._id && game.user.isGM) {
+    let marker = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
+    if (marker && marker.id) {
+        markerId = marker.id;
         if (!game.paused && Settings.shouldAnimate()) {
-            animator = Marker.startAnimation(animator, marker._id);
-            markerId = marker._id;
+            animator = MarkerAnimation.startAnimation(animator, markerId);
+        }
+    }
+});
+
+Hooks.on('createTile', (scene, tile) => {
+    if (tile.flags.turnMarker == true) {
+        markerId = tile._id;
+        if (Settings.shouldAnimate()) {
+            animator = MarkerAnimation.startAnimation(animator, markerId);
         }
     }
 });
 
 Hooks.on('updateCombat', async (combat, update) => {
     if (update && game.user.isGM) {
-        let result = await Marker.placeMarker(combat.combatant.token._id, animator, markerId);
+        let tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
+        let result = await Marker.placeMarker(combat.combatant.token._id, (tile && tile.id) || undefined);
         markerId = result.markerId;
         animator = result.animator;
     }
 });
 
-Hooks.on('deleteCombat', async (x, y, z) => {
-    Marker.reset(animator);
-    markerId = undefined;
+Hooks.on('deleteCombat', async () => {
+    if (game.user.isGM) {
+        Marker.clearAllMarkers();
+    }
+    MarkerAnimation.stopAnimation(animator);
 });
 
 Hooks.on('updateToken', (scene, updateToken, updateData) => {
     if ((updateData.x || updateData.y || updateData.width || updateData.height || updateData.hidden) &&
         game.combat.combatant.tokenId == updateToken._id && game.user.isGM) {
-
-        Marker.moveMarkerToToken(updateToken._id, markerId);
+        let tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
+        Marker.moveMarkerToToken(updateToken._id, tile.id);
     }
 });
 
 Hooks.on('pauseGame', async (isPaused) => {
     if (markerId && Settings.shouldAnimate()) {
         if (isPaused) {
-            clearInterval(animator);
+            MarkerAnimation.stopAnimation(animator);
         } else {
-            animator = Marker.startAnimation(animator, markerId);
+            animator = MarkerAnimation.startAnimation(animator, markerId);
         }
     }
 });
