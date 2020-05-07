@@ -30,15 +30,15 @@ Select from a number of included images provided by the Foundry Community:
 
 |Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|
 |--|--|--|--|
-|<img src="turnmarker/images/bloody.png" width="200" />|<img src="turnmarker/images/blue.png" width="200" />|<img src="turnmarker/images/bluered.png" width="200" />|<img src="turnmarker/images/chromaticPink.png" width="200" />|
+|<img src="turnmarker/images/bloody.png" width="150" />|<img src="turnmarker/images/blue.png" width="150" />|<img src="turnmarker/images/bluered.png" width="150" />|<img src="turnmarker/images/chromaticPink.png" width="150" />|
 
 |Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|
 |--|--|--|--|
-|<img src="turnmarker/images/gold.png" width="200" />|<img src="turnmarker/images/green.png" width="200" />|<img src="turnmarker/images/orange.png" width="200" />|<img src="turnmarker/images/space.png" width="200" />|
+|<img src="turnmarker/images/gold.png" width="150" />|<img src="turnmarker/images/green.png" width="150" />|<img src="turnmarker/images/orange.png" width="150" />|<img src="turnmarker/images/space.png" width="150" />|
 
 |Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|
 |--|--|--|
-|<img src="turnmarker/images/space2.png" width="200" />|<img src="turnmarker/images/space3.png" width="200" />|<img src="turnmarker/images/white.png" width="200" />|
+|<img src="turnmarker/images/space2.png" width="150" />|<img src="turnmarker/images/space3.png" width="150" />|<img src="turnmarker/images/white.png" width="150" />|
 
 #### Custom Image Path
 Sets the path to an image to be used instead of the included images
