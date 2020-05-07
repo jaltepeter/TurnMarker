@@ -28,17 +28,17 @@ Defines in degrees how much the marker should rotate on each tick.
 #### Marker Image
 Select from a number of included images provided by the Foundry Community:
 
-|Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|
+|Runes of the Cultist by [Rin](https://foundryvtt.com/community/rin)|Runes of Regeneration by [Rin](https://foundryvtt.com/community/rin)|Runes of the Cosmos by [Rin](https://foundryvtt.com/community/rin)|Runes of Earthly Dust by [Rin](https://foundryvtt.com/community/rin)|
 |--|--|--|--|
-|<img src="turnmarker/images/bloody.png" width="150" />|<img src="turnmarker/images/blue.png" width="150" />|<img src="turnmarker/images/bluered.png" width="150" />|<img src="turnmarker/images/chromaticPink.png" width="150" />|
+|<img src="turnmarker/images/cultist.png" width="150" />|<img src="turnmarker/images/regeneration.png" width="150" />|<img src="turnmarker/images/cosmos.png" width="150" />|<img src="turnmarker/images/earthlydust.png" width="150" />|
 
-|Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|
+|Runes of Reality by [Rin](https://foundryvtt.com/community/rin)|Runes of Incendium by [Rin](https://foundryvtt.com/community/rin)|Runes of the Believer by [Rin](https://foundryvtt.com/community/rin)|Runes of the Mad Mage by [Rin](https://foundryvtt.com/community/rin)|
 |--|--|--|--|
-|<img src="turnmarker/images/gold.png" width="150" />|<img src="turnmarker/images/green.png" width="150" />|<img src="turnmarker/images/orange.png" width="150" />|<img src="turnmarker/images/space.png" width="150" />|
+|<img src="turnmarker/images/reality.png" width="150" />|<img src="turnmarker/images/incendium.png" width="150" />|<img src="turnmarker/images/believer.png" width="150" />|<img src="turnmarker/images/madmage.png" width="150" />|
 
-|Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|Orange by [Rin](https://foundryvtt.com/community/rin)|
+|Runes of the Blue Sky by [Rin](https://foundryvtt.com/community/rin)|Runes of the Universe by [Rin](https://foundryvtt.com/community/rin)|Runes of Prosperity by [Rin](https://foundryvtt.com/community/rin)|
 |--|--|--|
-|<img src="turnmarker/images/space2.png" width="150" />|<img src="turnmarker/images/space3.png" width="150" />|<img src="turnmarker/images/white.png" width="150" />|
+|<img src="turnmarker/images/bluesky.png" width="150" />|<img src="turnmarker/images/universe.png" width="150" />|<img src="turnmarker/images/prosperity.png" width="150" />|
 
 #### Custom Image Path
 Sets the path to an image to be used instead of the included images
