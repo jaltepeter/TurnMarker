@@ -39,10 +39,18 @@ export class Settings {
     static getImagePath() {
         if (game.settings.get(modName, 'customimage').trim() == '') {
             switch (game.settings.get(modName, 'image')) {
-                case 0: return 'modules/turnmarker/images/RedRunes.png';
-                case 1: return 'modules/turnmarker/images/WhiteRunes.png';
-                case 2: return 'modules/turnmarker/images/BlueRunes.png';
-                case 3: return 'modules/turnmarker/images/GreenRunes.png';
+                case 0: return 'modules/turnmarker/images/incendium.png';
+                case 1: return 'modules/turnmarker/images/cultist.png';
+                case 2: return 'modules/turnmarker/images/regeneration.png';
+                case 3: return 'modules/turnmarker/images/cosmos.png';
+                case 4: return 'modules/turnmarker/images/earthlydust.png';
+                case 5: return 'modules/turnmarker/images/reality.png';
+                case 6: return 'modules/turnmarker/images/believer.png';
+                case 7: return 'modules/turnmarker/images/madmage.png';
+                case 8: return 'modules/turnmarker/images/bluesky.png';
+                case 9: return 'modules/turnmarker/images/universe.png';
+                case 10: return 'modules/turnmarker/images/prosperity.png';
+
             }
         } else {
             return game.settings.get(modName, 'customimage');
@@ -101,10 +109,18 @@ export class Settings {
             type: Number,
             default: 0,
             choices: [
-                'Red Runes by Rin',
-                'White Runes by Rin',
-                'Blue Runes by Rin',
-                'Green Runes by Rin'
+                'Runes of Incendium by Rin',
+                'Runes of the Cultist by Rin',
+                'Runes of Regeneration by Rin',
+                'Runes of the Cosmos by Rin',
+                'Runes of Earthly Dust by Rin',
+                'Runes of Reality by Rin',
+                'Runes of the Believer by Rin',
+                'Runes of the Mad Mage by Rin',
+                'Runes of the Blue Sky by Rin',
+                'Runes of the Universe by Rin',
+                'Runes of Prosperity by Rin'
+
             ],
             restricted: true
         });
