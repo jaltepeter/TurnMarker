@@ -75,12 +75,14 @@ export class Marker {
     }
 
     static updateImagePath() {
-        let tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
-        if (tile) {
-            canvas.scene.updateEmbeddedEntity('Tile', {
-                _id: tile.id,
-                img: Settings.getImagePath()
-            });
+        if (game.user.isGM) {
+            let tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
+            if (tile) {
+                canvas.scene.updateEmbeddedEntity('Tile', {
+                    _id: tile.id,
+                    img: Settings.getImagePath()
+                });
+            }
         }
     }
 
