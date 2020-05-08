@@ -1,3 +1,6 @@
+# 2.3
+- Marker should now be hidden when the active combatant is hidden
+
 # 2.2
 - Fix for multiple markers being placed, but not updated when more than one GM is logged in
 - Fix for error when changing image curing combat while player is connected
