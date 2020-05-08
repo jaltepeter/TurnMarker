@@ -1,3 +1,7 @@
+# 2.1
+- Fix error when trying to change the marker image when no combat is active
+- Fix error when moving a token outside of combat
+
 # 2.0
 - Change animation to be SIGNIFICANTLY smoother by using PIXI animations
 - Remove "Animation Degrees" setting as it is no longer needed

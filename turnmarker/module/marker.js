@@ -26,6 +26,7 @@ export class Marker {
                 height: token.h * ratio,
                 x: token.center.x - ((token.w * ratio) / 2),
                 y: token.center.y - ((token.h * ratio) / 2),
+                z: 900,
                 rotation: 0,
                 hidden: token.data.hidden,
                 locked: false,
@@ -33,7 +34,6 @@ export class Marker {
             });
 
             let tile = await canvas.scene.createEmbeddedEntity('Tile', newTile.data);
-            tile.displayToFront();
 
             return tile._id;
         } else {
@@ -76,11 +76,12 @@ export class Marker {
 
     static updateImagePath() {
         let tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
-
-        canvas.scene.updateEmbeddedEntity('Tile', {
-            _id: tile.id,
-            img: Settings.getImagePath()
-        });
+        if (tile) {
+            canvas.scene.updateEmbeddedEntity('Tile', {
+                _id: tile.id,
+                img: Settings.getImagePath()
+            });
+        }
     }
 
     /**
