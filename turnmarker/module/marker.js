@@ -59,10 +59,6 @@ export class Marker {
             y: token.center.y - ((token.h * ratio) / 2),
             hidden: token.data.hidden
         });
-
-        let tile = canvas.tiles.placeables.find(t => t.id == markerId);
-        tile.displayToFront();
-
     }
 
     /**

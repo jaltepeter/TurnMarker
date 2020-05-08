@@ -10,6 +10,8 @@ Hooks.on('ready', async () => {
     let marker = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
     if (marker && marker.id) {
         markerId = marker.id;
+        let tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
+        tile.displayToFront();
         if (!game.paused && Settings.shouldAnimate()) {
             animator = MarkerAnimation.startAnimation(animator, markerId);
         }
@@ -42,11 +44,12 @@ Hooks.on('deleteCombat', async () => {
 });
 
 Hooks.on('updateToken', (scene, updateToken, updateData) => {
+    let tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
     if ((updateData.x || updateData.y || updateData.width || updateData.height || updateData.hidden) &&
         game.combat.combatant.tokenId == updateToken._id && game.user.isGM) {
-        let tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
         Marker.moveMarkerToToken(updateToken._id, tile.id);
     }
+    tile.displayToFront();
 });
 
 Hooks.on('pauseGame', async (isPaused) => {

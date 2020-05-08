@@ -77,7 +77,7 @@ export class Settings {
 
         game.settings.register(modName, 'interval', {
             name: 'Animation Speed',
-            hint: 'How fast to animate the rotation if enabled (recommended between 50 and 200)',
+            hint: 'How fast to animate the rotation if enabled (recommended between 10 and 200)',
             scope: 'user',
             config: true,
             type: Number,
@@ -115,7 +115,8 @@ export class Settings {
             config: true,
             type: String,
             default: '',
-            restricted: true
+            restricted: true,
+            onChange: value => Marker.updateImagePath(value)
         });
     }
 }
