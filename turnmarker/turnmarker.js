@@ -1,6 +1,7 @@
 import { Settings } from './module/settings.js';
 import { Marker } from './module/marker.js';
 import { MarkerAnimation } from './module/markeranimation.js';
+import { firstGM } from './module/utils.js';
 
 let animator;
 let markerId;
@@ -30,7 +31,7 @@ Hooks.on('createTile', (scene, tile) => {
 });
 
 Hooks.on('updateCombat', async (combat, update) => {
-    if (update && game.user.isGM) {
+    if (update && game.user.isGM && game.userId == firstGM()) {
         let tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
         let result = await Marker.placeMarker(combat.combatant.token._id, (tile && tile.id) || undefined);
         markerId = result.markerId;

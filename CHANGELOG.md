@@ -1,3 +1,6 @@
+# 2.2
+- Fix for multiple markers being placed, but not updated when more than one GM is logged in
+
 # 2.1
 - Fix error when trying to change the marker image when no combat is active
 - Fix error when moving a token outside of combat
