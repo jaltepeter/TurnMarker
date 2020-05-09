@@ -1,3 +1,7 @@
+# 2.4
+- Fix for marker misbehaving when token vision is disabled for a scene
+- Fix for marker being visible when tokens are hidden
+
 # 2.3
 - Marker should now be hidden when the active combatant is hidden
 
