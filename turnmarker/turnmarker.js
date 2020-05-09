@@ -59,11 +59,13 @@ Hooks.on('updateToken', (scene, updateToken, updateData) => {
 });
 
 Hooks.on('updateTile', () => {
-    let tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
-    if (tile) {
-        let combatant = canvas.tokens.placeables.find(x => x.id == game.combat.combatant.tokenId);
-        if (combatant) {
-            tile.visible = canvas.sight.testVisibility(combatant.center, { tolerance: canvas.dimensions.size / 4 });
+    if (canvas.scene.data.tokenVision) {
+        let tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
+        if (tile) {
+            let combatant = canvas.tokens.placeables.find(x => x.id == game.combat.combatant.tokenId);
+            if (combatant && !combatant.data.hidden) {
+                tile.visible = canvas.sight.testVisibility(combatant.center, { tolerance: canvas.dimensions.size / 4 });
+            }
         }
     }
 });
