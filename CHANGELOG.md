@@ -1,3 +1,6 @@
+# 2.4.1
+- Ensure compatibility with 0.5.6
+
 # 2.4
 - Fix for marker misbehaving when token vision is disabled for a scene
 - Fix for marker being visible when tokens are hidden
