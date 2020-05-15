@@ -12,7 +12,8 @@ Hooks.on('ready', async () => {
     if (marker && marker.id) {
         markerId = marker.id;
         let tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
-        tile.displayToFront();
+        tile.zIndex = Math.max(...canvas.tiles.placeables.map(o => o.zIndex)) + 1;
+        tile.parent.sortChildren();
         if (!game.paused && Settings.shouldAnimate()) {
             animator = MarkerAnimation.startAnimation(animator, markerId);
         }
@@ -23,7 +24,8 @@ Hooks.on('createTile', (scene, tile) => {
     if (tile.flags.turnMarker == true) {
         markerId = tile._id;
         tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
-        tile.displayToFront();
+        tile.zIndex = Math.max(...canvas.tiles.placeables.map(o => o.zIndex)) + 1;
+        tile.parent.sortChildren();
         if (Settings.shouldAnimate()) {
             animator = MarkerAnimation.startAnimation(animator, markerId);
         }
@@ -54,7 +56,8 @@ Hooks.on('updateToken', (scene, updateToken, updateData) => {
         Marker.moveMarkerToToken(updateToken._id, tile.id);
     }
     if (tile) {
-        tile.displayToFront();
+        tile.zIndex = Math.max(...canvas.tiles.placeables.map(o => o.zIndex)) + 1;
+        tile.parent.sortChildren();
     }
 });
 

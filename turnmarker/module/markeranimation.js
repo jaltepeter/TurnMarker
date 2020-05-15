@@ -19,10 +19,10 @@ export class MarkerAnimation {
 
     static animateRotation(dt) {
         let tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
-        if (tile && tile.img) {
+        if (tile && tile.data.img) {
             let delta = Settings.getInterval() / 10000;
             try {
-                tile.img.rotation += (delta * dt);
+                tile.tile.img.rotation += (delta * dt);
             } catch (err) {
                 // skip lost frames if the tile is being updated by the server
             }
