@@ -1,3 +1,9 @@
+# 2.5
+- Updated for new tile structure in 0.5.6+
+
+# 2.4.2
+- Last release for 0.5.5-
+
 # 2.4.1
 - Ensure compatibility with 0.5.6
 
