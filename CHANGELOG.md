@@ -1,3 +1,6 @@
+# 2.5.1
+- Fix for error thrown when removing the last combatant from combat if combat has not started
+
 # 2.5
 - Updated for new tile structure in 0.5.6+
 
