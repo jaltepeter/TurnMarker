@@ -13,10 +13,18 @@ export class MarkerAnimation {
         return animator;
     }
 
+    /**
+     * Stops the animation loop for the specified tile
+     * @param {object} animator - The animator object
+     */
     static stopAnimation(animator) {
         canvas.app.ticker.remove(animator);
     }
 
+    /**
+     * Called on every tick of the animation loop to rotate the image based on the current frame
+     * @param {number} dt - The delta time
+     */
     static animateRotation(dt) {
         let tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
         if (tile && tile.data.img) {
