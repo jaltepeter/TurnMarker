@@ -1,3 +1,7 @@
+# 2.6.0
+- Now supports hex grids properly
+- New feature: Setting to announce turn changes with a chat message
+
 # 2.5.1
 - Fix for error thrown when removing the last combatant from combat if combat has not started
 

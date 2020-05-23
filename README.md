@@ -45,6 +45,9 @@ Marker images by [Rin](https://foundryvtt.com/community/rin)
 #### Custom Image Path
 Sets the path to an image to be used instead of the included images
 
+#### Announce Turns
+If enabled, a chat message will be sent when the turn in combat changes (unless the combatant is hidden in the combat tracker).
+
 ## Compatibility
 Most recently tested on [Foundry VTT](https://foundryvtt.com/ "Foundry VTT") version 0.5.5 (beta).
 
