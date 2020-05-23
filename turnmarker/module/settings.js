@@ -28,6 +28,13 @@ export class Settings {
     }
 
     /**
+     * Returns true if turn changes should be announced in chat
+     */
+    static shouldAnnounceTurns() {
+        return game.settings.get(modName, 'announce-turn');
+    }
+
+    /**
      * Gets a path to the currently selected image to be used as the marker
      */
     static getImagePath() {
@@ -117,6 +124,15 @@ export class Settings {
             default: '',
             restricted: true,
             onChange: value => Marker.updateImagePath(value)
+        });
+
+        game.settings.register(modName, 'announce-turn', {
+            name: 'Announce Turns',
+            hint: 'If enabled, will send a chat message for the new combatant',
+            scope: 'world',
+            config: true,
+            type: Boolean,
+            default: true
         });
     }
 }
