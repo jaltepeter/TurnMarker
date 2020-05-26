@@ -2,9 +2,11 @@ import { Settings } from './module/settings.js';
 import { Marker } from './module/marker.js';
 import { MarkerAnimation } from './module/markeranimation.js';
 import { firstGM } from './module/utils.js';
+import { Chatter } from './module/chatter.js';
 
 let animator;
 let markerId;
+let lastTurn = '';
 
 Hooks.on('ready', async () => {
     Settings.registerSettings();
@@ -33,29 +35,15 @@ Hooks.on('createTile', (scene, tile) => {
 });
 
 Hooks.on('updateCombat', async (combat, update) => {
-    if (update && game.user.isGM && game.userId == firstGM()) {
+    if (update && lastTurn != combat.combatant._id && game.user.isGM && game.userId == firstGM()) {
+        lastTurn = combat.combatant._id;
         if (combat && combat.combatant) {
             let tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
             let result = await Marker.placeMarker(combat.combatant.token._id, (tile && tile.id) || undefined);
             markerId = result.markerId;
             animator = result.animator;
             if (Settings.shouldAnnounceTurns() && !combat.combatant.hidden) {
-                let players = [];
-                combat.combatant.players.forEach(player => {
-                    players.push(player.name);
-                });
-                if (players.length == 0) players.push("GM");
-                ChatMessage.create({
-                    content:
-                        `<div class="flexrow"><div style="flex:3;">
-                        <img src="${combat.combatant.img}" style="border: none;">
-                    </div>
-                    <div style="flex: 12;">
-                        <h2>${combat.combatant.name}'s Turn</h2>
-                        <p>${players.join(' - ')}</p>
-                    </div>
-                    </div><em>Turn Marker</em>`
-                });
+                Chatter.sendTurnMessage(combat.combatant);
             }
         }
     }

@@ -1,3 +1,8 @@
+# 2.6.1
+- Now properly integrates with Combat Utility Belt's 'Hide NPC Names' option
+- Fix for multiple turn change messages when a combatant is removed from combat
+
+
 # 2.6.0
 - Now supports hex grids properly
 - New feature: Setting to announce turn changes with a chat message
