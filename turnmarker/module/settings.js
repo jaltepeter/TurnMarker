@@ -1,6 +1,13 @@
 import { modName } from './utils.js';
 import { Marker } from './marker.js';
 
+const ratio = 'ratio';
+const animation = 'animation';
+const interval = 'interval';
+const announce = 'announce-turn';
+const image = 'image';
+const customimage = 'customimage';
+
 /**
  * Provides functionality for reading and writing module settings
  */
@@ -10,36 +17,36 @@ export class Settings {
      * Gets the image ratio
      */
     static getRatio() {
-        return game.settings.get(modName, 'ratio');
+        return game.settings.get(modName, ratio);
     }
 
     /**
      * Returns true if the marker should be animated
      */
     static shouldAnimate() {
-        return game.settings.get(modName, 'animation');
+        return game.settings.get(modName, animation);
     }
 
     /**
      * Gets the animation interval in ms.
      */
     static getInterval() {
-        return game.settings.get(modName, 'interval');
+        return game.settings.get(modName, interval);
     }
 
     /**
      * Returns true if turn changes should be announced in chat
      */
     static shouldAnnounceTurns() {
-        return game.settings.get(modName, 'announce-turn');
+        return game.settings.get(modName, announce);
     }
 
     /**
      * Gets a path to the currently selected image to be used as the marker
      */
     static getImagePath() {
-        if (game.settings.get(modName, 'customimage').trim() == '') {
-            switch (game.settings.get(modName, 'image')) {
+        if (game.settings.get(modName, customimage).trim() == '') {
+            switch (game.settings.get(modName, image)) {
                 case 0: return 'modules/turnmarker/images/incendium.png';
                 case 1: return 'modules/turnmarker/images/cultist.png';
                 case 2: return 'modules/turnmarker/images/regeneration.png';
@@ -54,7 +61,7 @@ export class Settings {
 
             }
         } else {
-            return game.settings.get(modName, 'customimage');
+            return game.settings.get(modName, customimage);
         }
     }
 
@@ -63,7 +70,7 @@ export class Settings {
      */
     static registerSettings() {
 
-        game.settings.register(modName, 'ratio', {
+        game.settings.register(modName, ratio, {
             name: 'Image Ratio',
             hint: 'As compared to the token size.',
             scope: 'world',
@@ -73,7 +80,7 @@ export class Settings {
             restricted: true
         });
 
-        game.settings.register(modName, 'animation', {
+        game.settings.register(modName, animation, {
             name: 'Animate Marker?',
             hint: 'Use rotation animation on marker. (changes may not be visible until a new combat is started)',
             scope: 'user',
@@ -82,7 +89,7 @@ export class Settings {
             default: true,
         });
 
-        game.settings.register(modName, 'interval', {
+        game.settings.register(modName, interval, {
             name: 'Animation Speed',
             hint: 'How fast to animate the rotation if enabled (recommended between 10 and 200)',
             scope: 'user',
@@ -91,7 +98,7 @@ export class Settings {
             default: 100
         });
 
-        game.settings.register(modName, 'image', {
+        game.settings.register(modName, image, {
             name: 'Marker Image',
             scope: 'world',
             config: true,
@@ -115,7 +122,7 @@ export class Settings {
             onChange: value => Marker.updateImagePath(value)
         });
 
-        game.settings.register(modName, 'customimage', {
+        game.settings.register(modName, customimage, {
             name: 'Custom Image Path',
             hint: 'Use a custom image instead (leave blank to use a built in image)',
             scope: 'world',
@@ -126,7 +133,7 @@ export class Settings {
             onChange: value => Marker.updateImagePath(value)
         });
 
-        game.settings.register(modName, 'announce-turn', {
+        game.settings.register(modName, announce, {
             name: 'Announce Turns',
             hint: 'If enabled, will send a chat message for the new combatant',
             scope: 'world',
