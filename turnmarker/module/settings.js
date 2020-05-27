@@ -71,8 +71,8 @@ export class Settings {
     static registerSettings() {
 
         game.settings.register(modName, ratio, {
-            name: 'Image Ratio',
-            hint: 'As compared to the token size.',
+            name: 'settings.ratio.name',
+            hint: 'settings.ratio.hint',
             scope: 'world',
             config: true,
             type: Number,
@@ -81,8 +81,8 @@ export class Settings {
         });
 
         game.settings.register(modName, animation, {
-            name: 'Animate Marker?',
-            hint: 'Use rotation animation on marker. (changes may not be visible until a new combat is started)',
+            name: 'settings.animate.name',
+            hint: 'settings.animate.hint',
             scope: 'user',
             config: true,
             type: Boolean,
@@ -90,8 +90,8 @@ export class Settings {
         });
 
         game.settings.register(modName, interval, {
-            name: 'Animation Speed',
-            hint: 'How fast to animate the rotation if enabled (recommended between 10 and 200)',
+            name: 'settings.interval.name',
+            hint: 'settings.interval.hint',
             scope: 'user',
             config: true,
             type: Number,
@@ -99,7 +99,7 @@ export class Settings {
         });
 
         game.settings.register(modName, image, {
-            name: 'Marker Image',
+            name: 'settings.image.name',
             scope: 'world',
             config: true,
             type: Number,
@@ -116,15 +116,14 @@ export class Settings {
                 'Runes of the Blue Sky by Rin',
                 'Runes of the Universe by Rin',
                 'Runes of Prosperity by Rin'
-
             ],
             restricted: true,
             onChange: value => Marker.updateImagePath(value)
         });
 
         game.settings.register(modName, customimage, {
-            name: 'Custom Image Path',
-            hint: 'Use a custom image instead (leave blank to use a built in image)',
+            name: 'settings.customImage.name',
+            hint: 'settings.customImage.hint',
             scope: 'world',
             config: true,
             type: String,
@@ -134,8 +133,8 @@ export class Settings {
         });
 
         game.settings.register(modName, announce, {
-            name: 'Announce Turns',
-            hint: 'If enabled, will send a chat message for the new combatant',
+            name: 'settings.announce.name',
+            hint: 'settings.announce.hint',
             scope: 'world',
             config: true,
             type: Boolean,
