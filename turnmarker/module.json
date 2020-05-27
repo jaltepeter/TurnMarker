@@ -3,7 +3,7 @@
     "title": "Turn Marker",
     "description": "Displays a (optionally animated) marker on the token who's active turn it is.",
     "author": "Brunhine",
-    "version": "2.6.1",
+    "version": "2.6.2",
     "minimumCoreVersion": "0.5.6",
     "compatibleCoreVersion": "0.6.0",
     "esmodules": [
@@ -19,5 +19,5 @@
     ],
     "url": "https://gitlab.com/brunhine/foundry-turnmarker",
     "manifest": "https://gitlab.com/brunhine/foundry-turnmarker/raw/master/turnmarker/module.json",
-    "download": "https://gitlab.com/brunhine/foundry-turnmarker/-/jobs/artifacts/2.6.1/raw/turnmarker.zip?job=build"
+    "download": "https://gitlab.com/brunhine/foundry-turnmarker/-/jobs/artifacts/2.6.2/raw/turnmarker.zip?job=build"
 }

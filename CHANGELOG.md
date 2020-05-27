@@ -1,3 +1,7 @@
+# 2.6.2
+- Moved global settings into their own window
+- Add support for localization (translators desired!)
+
 # 2.6.1
 - Now properly integrates with Combat Utility Belt's 'Hide NPC Names' option
 - Fix for multiple turn change messages when a combatant is removed from combat
