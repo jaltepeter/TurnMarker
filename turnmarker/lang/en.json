@@ -1,27 +1,41 @@
 {
-    "settings": {
-        "ratio": {
-            "name": "Image Ratio",
-            "hint": "As compared to the token size."
-        },
-        "animate": {
-            "name": "Animate Marker?",
-            "hint": "Use rotation animation on marker. (changes may not be visible until a new combat is started)"
-        },
-        "interval": {
-            "name": "Animation Speed",
-            "hint": "How fast to animate the rotation if enabled (recommended between 10 and 200)"
-        },
-        "image": {
-            "name": "Marker Image"
-        },
-        "customImage": {
-            "name": "Custom Image Path",
-            "hint": "Use a custom image instead (leave blank to use a built in image)"
-        },
-        "announce": {
-            "name": "Announce Turns",
-            "hint": "If enabled, will send a chat message for the new combatant"
+    "tm": {
+        "settings": {
+            "button": {
+                "name": "Turn Marker Global Settings",
+                "label": "Turn Marker"
+            },
+            "formTitles": {
+                "settings": "Turn Marker - Global Settings"
+            },
+            "formHeaders": {
+                "imageOptions": "Marker Image Options",
+                "turnAnnounce": "Turn Announcements",
+                "save": "Save Settings"
+            },
+            "ratio": {
+                "name": "Image Ratio",
+                "hint": "As compared to the token size."
+            },
+            "animate": {
+                "name": "Animate Marker?",
+                "hint": "Use rotation animation on marker. (changes may not be visible until a new combat is started)"
+            },
+            "interval": {
+                "name": "Animation Speed",
+                "hint": "How fast to animate the rotation if enabled (recommended between 10 and 200)"
+            },
+            "image": {
+                "name": "Marker Image"
+            },
+            "customImage": {
+                "name": "Custom Image Path",
+                "hint": "Use a custom image instead (leave blank to use a built in image)"
+            },
+            "announce": {
+                "name": "Announce Turns",
+                "hint": "If enabled, will send a chat message for the new combatant"
+            }
         }
     }
 }

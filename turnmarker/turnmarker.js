@@ -3,6 +3,7 @@ import { Marker } from './module/marker.js';
 import { MarkerAnimation } from './module/markeranimation.js';
 import { firstGM } from './module/utils.js';
 import { Chatter } from './module/chatter.js';
+import { SettingsForm } from './module/settingsForm.js';
 
 let animator;
 let markerId;
@@ -16,7 +17,7 @@ Hooks.on('ready', async () => {
         let tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
         tile.zIndex = Math.max(...canvas.tiles.placeables.map(o => o.zIndex)) + 1;
         tile.parent.sortChildren();
-        if (!game.paused && Settings.shouldAnimate()) {
+        if (!game.paused && Settings.getShouldAnimate()) {
             animator = MarkerAnimation.startAnimation(animator, markerId);
         }
     }
@@ -28,7 +29,7 @@ Hooks.on('createTile', (scene, tile) => {
         tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
         tile.zIndex = Math.max(...canvas.tiles.placeables.map(o => o.zIndex)) + 1;
         tile.parent.sortChildren();
-        if (Settings.shouldAnimate()) {
+        if (Settings.getShouldAnimate()) {
             animator = MarkerAnimation.startAnimation(animator, markerId);
         }
     }
@@ -82,7 +83,7 @@ Hooks.on('updateTile', () => {
 });
 
 Hooks.on('pauseGame', async (isPaused) => {
-    if (markerId && Settings.shouldAnimate()) {
+    if (markerId && Settings.getShouldAnimate()) {
         if (isPaused) {
             MarkerAnimation.stopAnimation(animator);
         } else {

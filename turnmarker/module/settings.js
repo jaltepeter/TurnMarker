@@ -1,5 +1,6 @@
 import { modName } from './utils.js';
 import { Marker } from './marker.js';
+import { SettingsForm } from './settingsForm.js';
 
 const ratio = 'ratio';
 const animation = 'animation';
@@ -7,6 +8,19 @@ const interval = 'interval';
 const announce = 'announce-turn';
 const image = 'image';
 const customimage = 'customimage';
+export const imageTitles = [
+    'Runes of Incendium by Rin',
+    'Runes of the Cultist by Rin',
+    'Runes of Regeneration by Rin',
+    'Runes of the Cosmos by Rin',
+    'Runes of Earthly Dust by Rin',
+    'Runes of Reality by Rin',
+    'Runes of the Believer by Rin',
+    'Runes of the Mad Mage by Rin',
+    'Runes of the Blue Sky by Rin',
+    'Runes of the Universe by Rin',
+    'Runes of Prosperity by Rin'
+];
 
 /**
  * Provides functionality for reading and writing module settings
@@ -20,10 +34,14 @@ export class Settings {
         return game.settings.get(modName, ratio);
     }
 
+    static setRatio(val) {
+        game.settings.set(modName, ratio, val);
+    }
+
     /**
      * Returns true if the marker should be animated
      */
-    static shouldAnimate() {
+    static getShouldAnimate() {
         return game.settings.get(modName, animation);
     }
 
@@ -40,7 +58,13 @@ export class Settings {
     static shouldAnnounceTurns() {
         return game.settings.get(modName, announce);
     }
+    static setShouldAnnounceTurns(val) {
+        game.settings.set(modName, announce, val);
+    }
 
+    static getImage() {
+        return game.settings.get(modName, image);
+    }
     /**
      * Gets a path to the currently selected image to be used as the marker
      */
@@ -65,24 +89,44 @@ export class Settings {
         }
     }
 
+    static setImage(val) {
+        game.settings.set(modName, image, val);
+    }
+
+    static getCustomImagePath() {
+        return game.settings.get(modName, customimage);
+    }
+
+    static setCustomImagePath(val) {
+        game.settings.set(modName, customimage, val);
+    }
+
     /**
      * Registers all game settings
      */
     static registerSettings() {
 
+        game.settings.registerMenu(modName, 'tm.settingsMenu', {
+            name: 'tm.settings.button.name',
+            label: 'tm.settings.button.label',
+            icon: 'fas fa-sync-alt',
+            type: SettingsForm,
+            restricted: true,
+        });
+
         game.settings.register(modName, ratio, {
-            name: 'settings.ratio.name',
-            hint: 'settings.ratio.hint',
+            name: 'tm.settings.ratio.name',
+            hint: 'tm.settings.ratio.hint',
             scope: 'world',
-            config: true,
+            config: false,
             type: Number,
             default: 1.5,
             restricted: true
         });
 
         game.settings.register(modName, animation, {
-            name: 'settings.animate.name',
-            hint: 'settings.animate.hint',
+            name: 'tm.settings.animate.name',
+            hint: 'tm.settings.animate.hint',
             scope: 'user',
             config: true,
             type: Boolean,
@@ -90,8 +134,8 @@ export class Settings {
         });
 
         game.settings.register(modName, interval, {
-            name: 'settings.interval.name',
-            hint: 'settings.interval.hint',
+            name: 'tm.settings.interval.name',
+            hint: 'tm.settings.interval.hint',
             scope: 'user',
             config: true,
             type: Number,
@@ -99,33 +143,21 @@ export class Settings {
         });
 
         game.settings.register(modName, image, {
-            name: 'settings.image.name',
+            name: 'tm.settings.image.name',
             scope: 'world',
-            config: true,
+            config: false,
             type: Number,
             default: 0,
-            choices: [
-                'Runes of Incendium by Rin',
-                'Runes of the Cultist by Rin',
-                'Runes of Regeneration by Rin',
-                'Runes of the Cosmos by Rin',
-                'Runes of Earthly Dust by Rin',
-                'Runes of Reality by Rin',
-                'Runes of the Believer by Rin',
-                'Runes of the Mad Mage by Rin',
-                'Runes of the Blue Sky by Rin',
-                'Runes of the Universe by Rin',
-                'Runes of Prosperity by Rin'
-            ],
+            choices: imageTitles,
             restricted: true,
             onChange: value => Marker.updateImagePath(value)
         });
 
         game.settings.register(modName, customimage, {
-            name: 'settings.customImage.name',
-            hint: 'settings.customImage.hint',
+            name: 'tm.settings.customImage.name',
+            hint: 'tm.settings.customImage.hint',
             scope: 'world',
-            config: true,
+            config: false,
             type: String,
             default: '',
             restricted: true,
@@ -133,10 +165,10 @@ export class Settings {
         });
 
         game.settings.register(modName, announce, {
-            name: 'settings.announce.name',
-            hint: 'settings.announce.hint',
+            name: 'tm.settings.announce.name',
+            hint: 'tm.settings.announce.hint',
             scope: 'world',
-            config: true,
+            config: false,
             type: Boolean,
             default: true
         });
