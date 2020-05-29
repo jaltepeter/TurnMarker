@@ -1,3 +1,12 @@
+# 2.6.3
+- New optional feature: "Start Marker"
+    - Places a static marker under the token when they start their turn to signify where they started
+- German language support
+- Korean language support
+- Added file browsers to the settings window for image selection
+- New setting to disable token image in turn announcements
+- Added marker preview to settings window
+
 # 2.6.2
 - Moved global settings into their own window
 - Add support for localization (translators desired!)
