@@ -118,22 +118,25 @@ export class Settings {
      */
     static getImagePath() {
         if (game.settings.get(modName, customimage).trim() == '') {
-            switch (game.settings.get(modName, image)) {
-                case 0: return 'modules/turnmarker/images/incendium.png';
-                case 1: return 'modules/turnmarker/images/cultist.png';
-                case 2: return 'modules/turnmarker/images/regeneration.png';
-                case 3: return 'modules/turnmarker/images/cosmos.png';
-                case 4: return 'modules/turnmarker/images/earthlydust.png';
-                case 5: return 'modules/turnmarker/images/reality.png';
-                case 6: return 'modules/turnmarker/images/believer.png';
-                case 7: return 'modules/turnmarker/images/madmage.png';
-                case 8: return 'modules/turnmarker/images/bluesky.png';
-                case 9: return 'modules/turnmarker/images/universe.png';
-                case 10: return 'modules/turnmarker/images/prosperity.png';
-
-            }
+            return this.getImageByIndex(game.settings.get(modName, image));
         } else {
             return game.settings.get(modName, customimage);
+        }
+    }
+
+    static getImageByIndex(index) {
+        switch (index) {
+            case 0: return 'modules/turnmarker/images/incendium.png';
+            case 1: return 'modules/turnmarker/images/cultist.png';
+            case 2: return 'modules/turnmarker/images/regeneration.png';
+            case 3: return 'modules/turnmarker/images/cosmos.png';
+            case 4: return 'modules/turnmarker/images/earthlydust.png';
+            case 5: return 'modules/turnmarker/images/reality.png';
+            case 6: return 'modules/turnmarker/images/believer.png';
+            case 7: return 'modules/turnmarker/images/madmage.png';
+            case 8: return 'modules/turnmarker/images/bluesky.png';
+            case 9: return 'modules/turnmarker/images/universe.png';
+            case 10: return 'modules/turnmarker/images/prosperity.png';
         }
     }
 

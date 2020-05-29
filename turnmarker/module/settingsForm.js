@@ -28,7 +28,8 @@ export class SettingsForm extends FormApplication {
             announce: Settings.shouldAnnounceTurns(),
             announceImage: Settings.getIncludeAnnounceImage(),
             startMarkerEnabled: Settings.getStartMarkerEnabled(),
-            startMarkerPath: Settings.getStartMarkerPath()
+            startMarkerPath: Settings.getStartMarkerPath(),
+            previewPath: Settings.getImagePath()
         };
     }
 
@@ -49,6 +50,27 @@ export class SettingsForm extends FormApplication {
 
     activateListeners(html) {
         super.activateListeners(html);
+        const markerSelect = html.find('#image');
+        const customImage = html.find('#customImage');
+        const markerPreview = html.find('#markerPreview');
+
+        if (markerSelect.length > 0) {
+            markerSelect.on('change', event => {
+                if (customImage[0].value.trim() == '') {
+                    markerPreview.attr('src', Settings.getImageByIndex(Number(event.target.value)));
+                }
+            });
+        }
+
+        if (customImage.length > 0) {
+            customImage.on('change', event => {
+                if (event.target.value.trim() == '') {
+                    markerPreview.attr('src', Settings.getImageByIndex(Number(markerSelect[0].value)));
+                } else {
+                    markerPreview.attr('src', event.target.value);
+                }
+            });
+        }
     }
 
     getSelectList(array, selected) {

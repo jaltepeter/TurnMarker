@@ -12,7 +12,7 @@
     <div class="form-group">
         <label>{{localize 'tm.settings.image.name'}}:</label>
         <div class="form-fields">
-            <select name="image">
+            <select id="image" name="image">
                 {{#select image}}
                 {{#each image}}
                 <option value="{{@index}}" {{#if this.selected}}selected="selected" {{/if}}>{{this.value}}</option>
@@ -29,9 +29,15 @@
                 title="Browse Files" tabindex="-1">
                 <i class="fas fa-file-import fa-fw"></i>
             </button>
-            <input name="customImage" type="text" value="{{customImage}}" />
+            <input id="customImage" name="customImage" type="text" value="{{customImage}}" />
         </div>
         <p class="notes">{{localize 'tm.settings.customImage.hint'}}</p>
+    </div>
+    <div class="form-group">
+        <label>Marker Preview</label>
+        <div class="form-fields">
+            <img id="markerPreview" src="{{previewPath}}" />
+        </div>
     </div>
     <hr />
     <!--Turn Announcements-->
