@@ -30,6 +30,18 @@
         <p class="notes">{{localize 'tm.settings.announce.hint'}}</p>
     </div>
     <hr />
+    <h2>{{localize 'tm.settings.formHeaders.startMarker'}}</h2>
+    <div class="form-group">
+        <label>{{localize 'tm.settings.startEnabled.name'}}</label>
+        <input name="startMarkerEnabled" type="checkbox" {{#if startMarkerEnabled}}checked="checked" {{/if}} />
+        <p class="notes">{{localize 'tm.settings.startEnabled.hint'}}</p>
+    </div>
+    <div class="form-group">
+        <label>{{localize 'tm.settings.startImage.name'}}:</label>
+        <input name="startMarkerPath" type="text" value="{{startMarkerPath}}" />
+        <p class="notes">{{localize 'tm.settings.startImage.hint'}}</p>
+    </div>
+    <hr />
     <p>More information at <a href="https://brunhine.com/fvtt/turnmarker" target="_blank">Brunhine.com</a></p>
     <button type="submit" name="submit">
         <i class="far fa-save"></i> {{localize 'tm.settings.formHeaders.save'}}

@@ -11,6 +11,7 @@
             "formHeaders": {
                 "imageOptions": "Marker Image Options",
                 "turnAnnounce": "Turn Announcements",
+                "startMarker": "Start Marker",
                 "save": "Save Settings"
             },
             "ratio": {
@@ -35,6 +36,14 @@
             "announce": {
                 "name": "Announce Turns",
                 "hint": "If enabled, will send a chat message for the new combatant"
+            },
+            "startEnabled": {
+                "name": "Enabled Start Marker",
+                "hint": "If enabled, will place a marker at the location a token started its turn"
+            },
+            "startImage": {
+                "name": "Custom Image Path",
+                "hint": "Use a custom image for the start marker (leave blank to use the built in image)"
             }
         }
     }

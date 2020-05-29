@@ -1,6 +1,6 @@
-import { modName } from './utils.js';
 import { Marker } from './marker.js';
 import { SettingsForm } from './settingsForm.js';
+import { modName } from './utils.js';
 
 const ratio = 'ratio';
 const animation = 'animation';
@@ -8,6 +8,8 @@ const interval = 'interval';
 const announce = 'announce-turn';
 const image = 'image';
 const customimage = 'customimage';
+const startMarkerEnabled = 'startMarker-enabled';
+const startMarkerImage = 'startMarker-custom';
 export const imageTitles = [
     'Runes of Incendium by Rin',
     'Runes of the Cultist by Rin',
@@ -34,6 +36,10 @@ export class Settings {
         return game.settings.get(modName, ratio);
     }
 
+    /**
+     * Sets the image ratio
+     * @param {Number} val - The image ratio
+     */
     static setRatio(val) {
         game.settings.set(modName, ratio, val);
     }
@@ -58,13 +64,46 @@ export class Settings {
     static shouldAnnounceTurns() {
         return game.settings.get(modName, announce);
     }
+
+    /**
+     * Sets whether or not to announce turn changes
+     * @param {Boolean} val - Whether or not to announce turn changes
+     */
     static setShouldAnnounceTurns(val) {
         game.settings.set(modName, announce, val);
     }
 
-    static getImage() {
+    /**
+     * Gets the index of the currently selected marker image
+     */
+    static getImageIndex() {
         return game.settings.get(modName, image);
     }
+
+    static getStartMarker() {
+        if (game.settings.get(modName, startMarkerImage).trim() == '') {
+            return 'modules/turnmarker/images/start.png';
+        } else {
+            return game.settings.get(modName, startMarkerImage);
+        }
+    }
+
+    static getStartMarkerEnabled() {
+        return game.settings.get(modName, startMarkerEnabled);
+    }
+
+    static setStartMarkerEnabled(val) {
+        game.settings.set(modName, startMarkerEnabled, val);
+    }
+
+    static getStartMarkerPath() {
+        return game.settings.get(modName, startMarkerImage);
+    }
+
+    static setStartMarkerPath(val) {
+        game.settings.set(modName, startMarkerImage, val);
+    }
+
     /**
      * Gets a path to the currently selected image to be used as the marker
      */
@@ -171,6 +210,26 @@ export class Settings {
             config: false,
             type: Boolean,
             default: true
+        });
+
+        game.settings.register(modName, startMarkerEnabled, {
+            name: 'tm.settings.startEnabled.name',
+            hint: 'tm.settings.startEnabled.hint',
+            scope: 'world',
+            config: false,
+            type: Boolean,
+            default: false,
+            restricted: true
+        });
+
+        game.settings.register(modName, startMarkerImage, {
+            name: 'tm.settings.startImage.name',
+            hint: 'tm.settings.startImage.hint',
+            scope: 'world',
+            config: false,
+            type: String,
+            default: '',
+            restricted: true
         });
     }
 }

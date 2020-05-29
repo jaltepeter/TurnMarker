@@ -1,6 +1,6 @@
+import { MarkerAnimation } from './markeranimation.js';
 import { Settings } from './settings.js';
 import { findTokenById } from './utils.js';
-import { MarkerAnimation } from './markeranimation.js';
 
 /**
  * Provides functionality for creating, moving, and animating the turn marker
@@ -41,6 +41,38 @@ export class Marker {
         } else {
             this.moveMarkerToToken(tokenId, markerId);
             return markerId;
+        }
+    }
+
+    /**
+     * If enabled in settings, place a "start" marker under the token where their turn started.
+     * @param {String} tokenId - The ID of the token to place the start marker under
+     */
+    static async placeStartMarker(tokenId) {
+        for (var tile of canvas.scene.getEmbeddedCollection('Tile')) {
+            if (tile.flags.startMarker) {
+                await canvas.scene.deleteEmbeddedEntity('Tile', tile._id);
+            }
+        }
+
+        if (Settings.getStartMarkerEnabled()) {
+            let token = findTokenById(tokenId);
+            let dims = this.getImageDimensions(token);
+            let center = this.getImageLocation(token);
+            let newTile = new Tile({
+                img: Settings.getStartMarker(),
+                width: dims.w,
+                height: dims.h,
+                x: center.x,
+                y: center.y,
+                z: 900,
+                rotation: 0,
+                hidden: token.data.hidden,
+                locked: false,
+                flags: { startMarker: true }
+            });
+
+            canvas.scene.createEmbeddedEntity('Tile', newTile.data);
         }
     }
 
@@ -106,8 +138,8 @@ export class Marker {
      * Gets the proper dimensions of the marker tile taking into account the current grid layout
      * @param {object} token - The token that the tile should be placed under
      */
-    static getImageDimensions(token) {
-        let ratio = Settings.getRatio();
+    static getImageDimensions(token, ignoreRatio = false) {
+        let ratio = ignoreRatio ? 1 : Settings.getRatio();
         let newWidth = 0;
         let newHeight = 0;
 
@@ -131,8 +163,8 @@ export class Marker {
      * Gets the proper location of the marker tile taking into account the current grid layout
      * @param {object} token - The token that the tile should be placed under
      */
-    static getImageLocation(token) {
-        let ratio = Settings.getRatio();
+    static getImageLocation(token, ignoreRatio = false) {
+        let ratio = ignoreRatio ? 1 : Settings.getRatio();
         let newX = 0;
         let newY = 0;
 

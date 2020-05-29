@@ -1,9 +1,8 @@
-import { Settings } from './module/settings.js';
+import { Chatter } from './module/chatter.js';
 import { Marker } from './module/marker.js';
 import { MarkerAnimation } from './module/markeranimation.js';
+import { Settings } from './module/settings.js';
 import { firstGM } from './module/utils.js';
-import { Chatter } from './module/chatter.js';
-import { SettingsForm } from './module/settingsForm.js';
 
 let animator;
 let markerId;
@@ -43,6 +42,7 @@ Hooks.on('updateCombat', async (combat, update) => {
             let result = await Marker.placeMarker(combat.combatant.token._id, (tile && tile.id) || undefined);
             markerId = result.markerId;
             animator = result.animator;
+            await Marker.placeStartMarker(combat.combatant.token._id);
             if (Settings.shouldAnnounceTurns() && !combat.combatant.hidden) {
                 Chatter.sendTurnMessage(combat.combatant);
             }
