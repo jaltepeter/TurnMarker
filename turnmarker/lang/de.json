@@ -1,0 +1,41 @@
+{
+	"tm": {
+		"settings": {
+			"button": {
+				"name": "Turn Marker Globale Einstellungen",
+				"label": "Turn Marker"
+			},
+			"formTitles": {
+				"settings": "Turn Marker - Globale Einstellungen"
+			},
+			"formHeaders": {
+				"imageOptions": "Marker Bildoptionen",
+				"turnAnnounce": "Ankündigung für Runden",
+				"save": "Einstellungen sichern"
+			},
+			"ratio": {
+				"name": "Bildverhältnis",
+				"hint": "Im Vergleich zur Tokengröße."
+			},
+			"animate": {
+				"name": "Animierter Marker?",
+				"hint": "Verwende eine rotierende Animation des Markers. (Veränderungen sind eventuell nicht sichtbar bis ein neuer Kampf startet)"
+			},
+			"interval": {
+				"name": "Animationsgeschwindigkeit",
+				"hint": "Wie schnell soll die Animation rotieren, falls die Animation eingeschaltet ist (Empfohlen wird zwischen 10 und 200)"
+			},
+			"image": {
+				"name": "Bild für den Marker"
+			},
+			"customImage": {
+				"name": "Pfad zum benutzerdefinierten Bild",
+				"hint": "Verwende ein eigenes Bild (Leer lassen, um eins der ausgelieferten Bilder zu verwenden)"
+			},
+			"announce": {
+				"name": "Ankündigung für Runden",
+				"hint": "Wenn dies eingeschaltet ist bekommt der aktuelle Kämpfer eine Nachricht im Chat"
+			}
+		}
+	}
+}
