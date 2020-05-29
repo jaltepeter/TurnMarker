@@ -11,6 +11,7 @@
             "formHeaders": {
                 "imageOptions": "표식 이미지 옵션",
                 "turnAnnounce": "턴 알림",
+                "startMarker": "표식 시작",
                 "save": "설정 저장"
             },
             "ratio": {
@@ -35,6 +36,14 @@
             "announce": {
                 "name": "턴 알림",
                 "hint": "활성화 되었을 때 새 전투원을 위한 채팅 메시지를 보낸다"
+            },
+            "startEnabled": {
+                "name": "시작 표식 활성화",
+                "hint": "활성화할 경우 토큰이 턴을 시작했을 때 있던 위치에 표식을 위치시킴"
+            },
+            "startImage": {
+                "name": "커스텀 이미지 경로",
+                "hint": "대신할 커스텀 이미지를 사용한다(모듈에 내장된 이미지를 사용하려면 비워둘 것)"
             }
         }
     }
