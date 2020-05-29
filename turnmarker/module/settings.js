@@ -6,6 +6,7 @@ const ratio = 'ratio';
 const animation = 'animation';
 const interval = 'interval';
 const announce = 'announce-turn';
+const announceImage = 'announce-image';
 const image = 'image';
 const customimage = 'customimage';
 const startMarkerEnabled = 'startMarker-enabled';
@@ -71,6 +72,14 @@ export class Settings {
      */
     static setShouldAnnounceTurns(val) {
         game.settings.set(modName, announce, val);
+    }
+
+    static getIncludeAnnounceImage() {
+        return game.settings.get(modName, announceImage);
+    }
+
+    static setIncludeAnnounceImage(val) {
+        game.settings.set(modName, announceImage, val);
     }
 
     /**
@@ -206,6 +215,15 @@ export class Settings {
         game.settings.register(modName, announce, {
             name: 'tm.settings.announce.name',
             hint: 'tm.settings.announce.hint',
+            scope: 'world',
+            config: false,
+            type: Boolean,
+            default: true
+        });
+
+        game.settings.register(modName, announceImage, {
+            name: 'tm.settings.announceImage.name',
+            hint: 'tm.settings.announceImage.hint',
             scope: 'world',
             config: false,
             type: Boolean,

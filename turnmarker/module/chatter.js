@@ -1,3 +1,5 @@
+import { Settings } from "./settings.js";
+
 export class Chatter {
 
     static sendTurnMessage(combatant) {
@@ -10,16 +12,18 @@ export class Chatter {
             speaker: { actor: combatant.actor },
             //speaker: { actor: {}, alias: 'Turn Marker' },
             content:
-                `<div class="flexrow"><div style="flex:3;">
-                        <img src="${combatant.img}" style="border: none;">
-                    </div>
+                `<div class="flexrow">${this.placeImage(combatant)}
                     <div style="flex: 12;">
                         <h2>${combatant.name}'s Turn</h2>
                         <p>${players.join(' - ')}</p>
                     </div>
                     </div><em>Turn Marker</em>`
         });
-
     }
 
+    static placeImage(combatant) {
+        if (Settings.getIncludeAnnounceImage()) {
+            return `<div style="flex:3;"><img src="${combatant.img}" style="border: none;" /></div>`;
+        } else return '';
+    }
 }

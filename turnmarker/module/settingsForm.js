@@ -26,6 +26,7 @@ export class SettingsForm extends FormApplication {
             image: this.getSelectList(imageTitles, Settings.getImageIndex()),
             customImage: Settings.getCustomImagePath(),
             announce: Settings.shouldAnnounceTurns(),
+            announceImage: Settings.getIncludeAnnounceImage(),
             startMarkerEnabled: Settings.getStartMarkerEnabled(),
             startMarkerPath: Settings.getStartMarkerPath()
         };
@@ -41,6 +42,7 @@ export class SettingsForm extends FormApplication {
         Settings.setImage(d.image);
         Settings.setCustomImagePath(d.customImage);
         Settings.setShouldAnnounceTurns(d.announce);
+        Settings.setIncludeAnnounceImage(d.announceImage);
         Settings.setStartMarkerEnabled(d.startMarkerEnabled);
         Settings.setStartMarkerPath(d.startMarkerPath);
     }
