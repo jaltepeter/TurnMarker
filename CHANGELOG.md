@@ -1,3 +1,11 @@
+# 2.6.4
+- Enable Japanese Language support
+- Add option to disable Turn Marker
+- Now properly removes the start marker from the canvas when combat ends
+- Fix for webm token thumbnails not always displaying properly in turn announcements
+- Fix for error when manually creating a combat from the combat tracker
+
+
 # 2.6.3
 - New optional feature: "Start Marker"
     - Places a static marker under the token when they start their turn to signify where they started
