@@ -23,7 +23,12 @@ export class Chatter {
 
     static placeImage(combatant) {
         if (Settings.getIncludeAnnounceImage()) {
-            return `<div style="flex:3;"><img src="${combatant.img}" style="border: none;" /></div>`;
+            let img = combatant.img;
+            if (combatant.flags.core && combatant.flags.core.thumb) {
+                img = combatant.flags.core.thumb;
+            }
+            return `<div style="flex:3;"><img src="${img}" style="border: none;" /></div>`;
+            // return `<div style="flex:3;"><video><source="${combatant.img}"></video></div>`;
         } else return '';
     }
 }
