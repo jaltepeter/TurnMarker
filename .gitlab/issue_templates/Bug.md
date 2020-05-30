@@ -5,7 +5,7 @@ In order to submit an effective bug report, please include the following informa
 > Please share the following basic details about your setup.
 
 * Foundry VTT Version: (Example 0.5.4)
-* Turn Tracker Version: (Example 2.2.0)
+* Turn Marker Version: (Example 2.2.0)
 
 ### Issue Description
 

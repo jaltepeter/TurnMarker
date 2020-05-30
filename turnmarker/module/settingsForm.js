@@ -22,6 +22,7 @@ export class SettingsForm extends FormApplication {
 
     getData() {
         return {
+            turnMarkerEnabled: Settings.getTurnMarkerEnabled(),
             ratio: Settings.getRatio(),
             image: this.getSelectList(imageTitles, Settings.getImageIndex()),
             customImage: Settings.getCustomImagePath(),
@@ -44,6 +45,7 @@ export class SettingsForm extends FormApplication {
         Settings.setCustomImagePath(d.customImage);
         Settings.setShouldAnnounceTurns(d.announce);
         Settings.setIncludeAnnounceImage(d.announceImage);
+        Settings.setTurnMarkerEnabled(d.turnMarkerEnabled);
         Settings.setStartMarkerEnabled(d.startMarkerEnabled);
         Settings.setStartMarkerPath(d.startMarkerPath);
     }
@@ -53,6 +55,7 @@ export class SettingsForm extends FormApplication {
         const markerSelect = html.find('#image');
         const customImage = html.find('#customImage');
         const markerPreview = html.find('#markerPreview');
+
 
         if (markerSelect.length > 0) {
             markerSelect.on('change', event => {
@@ -66,8 +69,10 @@ export class SettingsForm extends FormApplication {
             customImage.on('change', event => {
                 if (event.target.value.trim() == '') {
                     markerPreview.attr('src', Settings.getImageByIndex(Number(markerSelect[0].value)));
+                    markerSelect[0].disabled = false;
                 } else {
                     markerPreview.attr('src', event.target.value);
+                    markerSelect[0].disabled = true;
                 }
             });
         }

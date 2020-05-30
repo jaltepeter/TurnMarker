@@ -14,6 +14,9 @@
                 "startMarker": "Start Marker",
                 "save": "Save Settings"
             },
+            "turnMarkerEnabled": {
+                "name": "Enable Turn Marker"
+            },
             "ratio": {
                 "name": "Image Ratio",
                 "hint": "As compared to the token size."

@@ -13,31 +13,35 @@ export class Marker {
      * @param {Object} animator - The animator object
      * @param {String} markerId - The ID of the tile being used as the turn marker
      */
-    static async placeMarker(tokenId, markerId) {
+    static async placeTurnMarker(tokenId, markerId) {
         if (!markerId) {
             this.clearAllMarkers();
 
-            let token = findTokenById(tokenId);
-            let ratio = Settings.getRatio();
-            let dims = this.getImageDimensions(token);
-            let center = this.getImageLocation(token);
+            if (Settings.getTurnMarkerEnabled()) {
+                let token = findTokenById(tokenId);
+                let ratio = Settings.getRatio();
+                let dims = this.getImageDimensions(token);
+                let center = this.getImageLocation(token);
 
-            let newTile = new Tile({
-                img: Settings.getImagePath(),
-                width: dims.w,
-                height: dims.h,
-                x: center.x,
-                y: center.y,
-                z: 900,
-                rotation: 0,
-                hidden: token.data.hidden,
-                locked: false,
-                flags: { turnMarker: true }
-            });
+                let newTile = new Tile({
+                    img: Settings.getImagePath(),
+                    width: dims.w,
+                    height: dims.h,
+                    x: center.x,
+                    y: center.y,
+                    z: 900,
+                    rotation: 0,
+                    hidden: token.data.hidden,
+                    locked: false,
+                    flags: { turnMarker: true }
+                });
 
-            let tile = await canvas.scene.createEmbeddedEntity('Tile', newTile.data);
+                let tile = await canvas.scene.createEmbeddedEntity('Tile', newTile.data);
 
-            return tile._id;
+                return tile._id;
+            } else {
+                return null;
+            }
         } else {
             this.moveMarkerToToken(tokenId, markerId);
             return markerId;

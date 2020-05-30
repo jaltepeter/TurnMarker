@@ -9,6 +9,7 @@ const announce = 'announce-turn';
 const announceImage = 'announce-image';
 const image = 'image';
 const customimage = 'customimage';
+const turnMarkerEnabled = 'turnmarker-enabled';
 const startMarkerEnabled = 'startMarker-enabled';
 const startMarkerImage = 'startMarker-custom';
 export const imageTitles = [
@@ -95,6 +96,15 @@ export class Settings {
         } else {
             return game.settings.get(modName, startMarkerImage);
         }
+    }
+
+    static getTurnMarkerEnabled() {
+        return game.settings.get(modName, turnMarkerEnabled);
+    }
+
+
+    static setTurnMarkerEnabled(val) {
+        game.settings.set(modName, turnMarkerEnabled, val);
     }
 
     static getStartMarkerEnabled() {
@@ -231,6 +241,16 @@ export class Settings {
             config: false,
             type: Boolean,
             default: true
+        });
+
+        game.settings.register(modName, turnMarkerEnabled, {
+            name: 'tm.settings.turnMarkerEnabled.name',
+            hint: 'tm.settings.turnMarkerEnabled.hint',
+            scope: 'world',
+            config: false,
+            type: Boolean,
+            default: true,
+            restricted: true
         });
 
         game.settings.register(modName, startMarkerEnabled, {

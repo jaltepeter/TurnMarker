@@ -40,9 +40,11 @@ Hooks.on('updateCombat', async (combat, update) => {
             lastTurn = combat.combatant._id;
             if (combat && combat.combatant) {
                 let tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
-                let result = await Marker.placeMarker(combat.combatant.token._id, (tile && tile.id) || undefined);
-                markerId = result.markerId;
-                animator = result.animator;
+                let result = await Marker.placeTurnMarker(combat.combatant.token._id, (tile && tile.id) || undefined);
+                if (result) {
+                    markerId = result.markerId;
+                    animator = result.animator;
+                }
                 await Marker.placeStartMarker(combat.combatant.token._id);
                 if (Settings.shouldAnnounceTurns() && !combat.combatant.hidden) {
                     Chatter.sendTurnMessage(combat.combatant);
@@ -61,14 +63,14 @@ Hooks.on('deleteCombat', async () => {
 
 Hooks.on('updateToken', (scene, updateToken, updateData) => {
     let tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
-    if ((updateData.x || updateData.y || updateData.width || updateData.height || updateData.hidden) &&
-        (game && game.combat && game.combat.combatant && game.combat.combatant.tokenId == updateToken._id) &&
-        game.user.isGM && game.combat) {
-        Marker.moveMarkerToToken(updateToken._id, tile.id);
-    }
     if (tile) {
-        tile.zIndex = Math.max(...canvas.tiles.placeables.map(o => o.zIndex)) + 1;
-        tile.parent.sortChildren();
+        if ((updateData.x || updateData.y || updateData.width || updateData.height || updateData.hidden) &&
+            (game && game.combat && game.combat.combatant && game.combat.combatant.tokenId == updateToken._id) &&
+            game.user.isGM && game.combat) {
+            Marker.moveMarkerToToken(updateToken._id, tile.id);
+            tile.zIndex = Math.max(...canvas.tiles.placeables.map(o => o.zIndex)) + 1;
+            tile.parent.sortChildren();
+        }
     }
 });
 
