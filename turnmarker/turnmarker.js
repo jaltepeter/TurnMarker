@@ -35,16 +35,18 @@ Hooks.on('createTile', (scene, tile) => {
 });
 
 Hooks.on('updateCombat', async (combat, update) => {
-    if (update && lastTurn != combat.combatant._id && game.user.isGM && game.userId == firstGM()) {
-        lastTurn = combat.combatant._id;
-        if (combat && combat.combatant) {
-            let tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
-            let result = await Marker.placeMarker(combat.combatant.token._id, (tile && tile.id) || undefined);
-            markerId = result.markerId;
-            animator = result.animator;
-            await Marker.placeStartMarker(combat.combatant.token._id);
-            if (Settings.shouldAnnounceTurns() && !combat.combatant.hidden) {
-                Chatter.sendTurnMessage(combat.combatant);
+    if (combat.combatant) {
+        if (update && lastTurn != combat.combatant._id && game.user.isGM && game.userId == firstGM()) {
+            lastTurn = combat.combatant._id;
+            if (combat && combat.combatant) {
+                let tile = canvas.tiles.placeables.find(t => t.data.flags.turnMarker == true);
+                let result = await Marker.placeMarker(combat.combatant.token._id, (tile && tile.id) || undefined);
+                markerId = result.markerId;
+                animator = result.animator;
+                await Marker.placeStartMarker(combat.combatant.token._id);
+                if (Settings.shouldAnnounceTurns() && !combat.combatant.hidden) {
+                    Chatter.sendTurnMessage(combat.combatant);
+                }
             }
         }
     }
