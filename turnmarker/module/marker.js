@@ -98,13 +98,13 @@ export class Marker {
     }
 
     /**
-     * Removes any existing turn marker tiles from the canvas
+     * Removes any existing turn marker and start marker tiles from the canvas
      */
     static async clearAllMarkers() {
         let tiles = canvas.scene.getEmbeddedCollection('Tile');
 
         for (var tile of tiles) {
-            if (tile.flags.turnMarker) {
+            if (tile.flags.turnMarker || tile.flags.startMarker) {
                 await canvas.scene.deleteEmbeddedEntity('Tile', tile._id);
             }
         }
