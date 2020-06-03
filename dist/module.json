@@ -1,36 +1,38 @@
 {
-	"name": "turnmarker",
-	"title": "Turn Marker",
-	"description": "Displays a (optionally animated) marker on the token who's active turn it is.",
-	"author": "Brunhine",
-	"version": "2.6.6",
-	"minimumCoreVersion": "0.5.6",
-	"compatibleCoreVersion": "0.6.0",
-	"esmodules": ["turnmarker.js"],
-	"scripts": [],
-	"languages": [
-		{
-			"lang": "en",
-			"name": "English",
-			"path": "lang/en.json"
-		},
-		{
-			"lang": "de",
-			"name": "German",
-			"path": "lang/de.json"
-		},
-		{
-			"lang": "ko",
-			"name": "Korean",
-			"path": "lang/ko.json"
-		},
-		{
-			"lang": "ja",
-			"name": " 日本語",
-			"path": "lang/ja.json"
-		}
-	],
-	"url": "https://github.com/Brunhine/TurnMarker",
-	"manifest": "https://raw.githubusercontent.com/Brunhine/TurnMarker/master/src/module.json",
-	"download": "https://github.com/Brunhine/TurnMarker/releases/download/v2.6.6/turnmarker.zip"
+    "name": "turnmarker",
+    "title": "Turn Marker",
+    "description": "Displays a (optionally animated) marker on the token who's active turn it is.",
+    "author": "Brunhine",
+    "version": "2.6.6",
+    "minimumCoreVersion": "0.5.6",
+    "compatibleCoreVersion": "0.6.0",
+    "esmodules": [
+        "scripts/turnmarker.js"
+    ],
+    "scripts": [],
+    "languages": [
+        {
+            "lang": "en",
+            "name": "English",
+            "path": "lang/en.json"
+        },
+        {
+            "lang": "de",
+            "name": "German",
+            "path": "lang/de.json"
+        },
+        {
+            "lang": "ko",
+            "name": "Korean",
+            "path": "lang/ko.json"
+        },
+        {
+            "lang": "ja",
+            "name": " 日本語",
+            "path": "lang/ja.json"
+        }
+    ],
+    "url": "https://github.com/Brunhine/TurnMarker",
+    "manifest": "https://raw.githubusercontent.com/Brunhine/TurnMarker/master/src/module.json",
+    "download": "https://github.com/Brunhine/TurnMarker/releases/download/v2.6.6/turnmarker.zip"
 }
