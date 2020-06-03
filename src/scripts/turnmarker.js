@@ -1,8 +1,8 @@
-import { Chatter } from './module/chatter.js';
-import { Marker } from './module/marker.js';
-import { MarkerAnimation } from './module/markeranimation.js';
-import { Settings } from './module/settings.js';
-import { firstGM } from './module/utils.js';
+import { Chatter } from './chatter.js';
+import { Marker } from './marker.js';
+import { MarkerAnimation } from './markeranimation.js';
+import { Settings } from './settings.js';
+import { firstGM } from './utils.js';
 
 let animator;
 let markerId;
