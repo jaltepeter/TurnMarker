@@ -32,15 +32,15 @@ Marker images by [Rin](https://foundryvtt.com/community/rin)
 
 |Runes of the Cultist |Runes of Regeneration |Runes of the Cosmos |Runes of Earthly Dust |
 |--|--|--|--|
-|<img src="turnmarker/images/cultist.png" width="150" />|<img src="turnmarker/images/regeneration.png" width="150" />|<img src="turnmarker/images/cosmos.png" width="150" />|<img src="turnmarker/images/earthlydust.png" width="150" />|
+|<img src="src/assets/cultist.png" width="150" />|<img src="src/assets/regeneration.png" width="150" />|<img src="src/assets/cosmos.png" width="150" />|<img src="src/assets/earthlydust.png" width="150" />|
 
 |Runes of Reality |Runes of Incendium |Runes of the Believer |Runes of the Mad Mage |
 |--|--|--|--|
-|<img src="turnmarker/images/reality.png" width="150" />|<img src="turnmarker/images/incendium.png" width="150" />|<img src="turnmarker/images/believer.png" width="150" />|<img src="turnmarker/images/madmage.png" width="150" />|
+|<img src="src/assets/reality.png" width="150" />|<img src="src/assets/incendium.png" width="150" />|<img src="src/assets/believer.png" width="150" />|<img src="src/assets/madmage.png" width="150" />|
 
 |Runes of the Blue Sky |Runes of the Universe |Runes of Prosperity |
 |--|--|--|
-|<img src="turnmarker/images/bluesky.png" width="150" />|<img src="turnmarker/images/universe.png" width="150" />|<img src="turnmarker/images/prosperity.png" width="150" />|
+|<img src="src/assets/bluesky.png" width="150" />|<img src="src/assets/universe.png" width="150" />|<img src="src/assets/prosperity.png" width="150" />|
 
 #### Custom Image Path
 Sets the path to an image to be used instead of the included images
