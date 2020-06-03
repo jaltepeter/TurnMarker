@@ -1,6 +1,13 @@
 # Turn Marker
 **Turn Marker** is a module for [Foundry VTT](https://foundryvtt.com/ "Foundry VTT") that adds an image under a token who is currently active in the combat tracker. This is completely system agnostic, and fully customizable to fit right into your game.
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/brunhine/turnmarker?style=flat-square)
+![GitHub latest version downloads](https://img.shields.io/github/downloads/brunhine/turnmarker/latest/total?style=flat-square)
+
+[![Twitter Follow](https://img.shields.io/badge/follow-%40Brunhine-blue.svg?style=flat-square&logo=twitter)](https://twitter.com/brunhine)
+[![Become a Patron](https://img.shields.io/badge/support-patreon-orange.svg?style=flat-square&logo=patreon)](https://www.patreon.com/brunhine)
+[![Donate via Ko-Fi](https://img.shields.io/badge/support-ko--fi-ff4646?style=flat-square&logo=ko-fi)](https://ko-fi.com/brunhine)
+
 ## Installation
 It's always better and easier to install modules through in in app browser. Just search for "Turn Marker"
 
