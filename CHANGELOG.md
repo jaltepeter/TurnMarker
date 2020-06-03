@@ -1,3 +1,7 @@
+# 2.6.5
+- Migrate repository from GitLab to GitHub
+- Add Webpack to reduce overall script size
+
 # 2.6.4
 - Enable Japanese Language support
 - Add option to disable Turn Marker
