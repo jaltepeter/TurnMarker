@@ -5,11 +5,13 @@
 	"author": "Brunhine",
 	"version": "2.6.7",
 	"minimumCoreVersion": "0.5.6",
-	"compatibleCoreVersion": "0.6.0",
+	"compatibleCoreVersion": "0.6.2",
 	"esmodules": [
 		"scripts/turnmarker.js"
 	],
-	"scripts": [],
+	"styles": [
+		"css/turnmarker.css"
+	],
 	"languages": [
 		{
 			"lang": "en",

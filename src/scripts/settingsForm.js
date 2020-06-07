@@ -1,5 +1,7 @@
 import { imageTitles, Settings } from './settings.js';
 
+const videos = ['mp4', 'webm', 'ogg'];
+
 export class SettingsForm extends FormApplication {
 
     constructor(object, options = {}) {
@@ -14,7 +16,7 @@ export class SettingsForm extends FormApplication {
             id: 'turnmarker-settings-form',
             title: 'Turn Marker - Global Settings',
             template: './modules/turnmarker/templates/settings.html',
-            classes: ['sheet'],
+            classes: ['sheet', 'tm-settings'],
             width: 500,
             closeOnSubmit: true
         });
@@ -40,6 +42,7 @@ export class SettingsForm extends FormApplication {
      * @param {Object} d - the form data
      */
     async _updateObject(e, d) {
+        console.log('Turn Marker | Saving Settings');
         Settings.setRatio(d.ratio);
         if (d.image) Settings.setImage(d.image);
         Settings.setCustomImagePath(d.customImage);
@@ -54,28 +57,54 @@ export class SettingsForm extends FormApplication {
         super.activateListeners(html);
         const markerSelect = html.find('#image');
         const customImage = html.find('#customImage');
-        const markerPreview = html.find('#markerPreview');
+        const markerImgPreview = html.find('#markerImgPreview');
 
+        this.updatePreview(html);
 
         if (markerSelect.length > 0) {
             markerSelect.on('change', event => {
                 if (customImage[0].value.trim() == '') {
-                    markerPreview.attr('src', Settings.getImageByIndex(Number(event.target.value)));
+                    markerImgPreview.attr('src', Settings.getImageByIndex(Number(event.target.value)));
                 }
             });
         }
 
         if (customImage.length > 0) {
             customImage.on('change', event => {
-                if (event.target.value.trim() == '') {
-                    markerPreview.attr('src', Settings.getImageByIndex(Number(markerSelect[0].value)));
-                    markerSelect[0].disabled = false;
-                } else {
-                    markerPreview.attr('src', event.target.value);
-                    markerSelect[0].disabled = true;
-                }
+                this.updatePreview(html);
             });
         }
+    }
+
+    updatePreview(html) {
+        const markerSelect = html.find('#image');
+        const customImage = html.find('#customImage');
+        const markerImgPreview = html.find('#markerImgPreview');
+        const markerVideoPreview = html.find('#markerVideoPreview');
+
+        if (customImage[0].value.trim() == '') {
+            markerSelect[0].disabled = false;
+            markerImgPreview.attr('src', Settings.getImageByIndex(Number(markerSelect[0].value)));
+            markerImgPreview.removeClass('hidden');
+            markerVideoPreview.addClass('hidden');
+        } else {
+            markerSelect[0].disabled = true;
+            const ext = this.getExtension(customImage[0].value);
+            console.warn(ext);
+            if (videos.includes(ext.toLowerCase())) {
+                markerVideoPreview.attr('src', customImage[0].value);
+                markerImgPreview.addClass('hidden');
+                markerVideoPreview.removeClass('hidden');
+            } else {
+                markerImgPreview.attr('src', customImage[0].value);
+                markerImgPreview.removeClass('hidden');
+                markerVideoPreview.addClass('hidden');
+            }
+        }
+    }
+
+    getExtension(filePath) {
+        return filePath.slice((filePath.lastIndexOf(".") - 1 >>> 0) + 2);
     }
 
     getSelectList(array, selected) {
