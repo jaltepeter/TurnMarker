@@ -3,16 +3,14 @@
 	"title": "Turn Marker",
 	"description": "Displays a (optionally animated) marker on the token who's active turn it is.",
 	"author": "Brunhine",
-	"version": "2.6.7",
+	"version": "2.6.8",
 	"minimumCoreVersion": "0.5.6",
 	"compatibleCoreVersion": "0.6.2",
 	"esmodules": [
 		"scripts/turnmarker.js"
 	],
 	"socket": true,
-	"styles": [
-		"css/turnmarker.css"
-	],
+	"styles": ["css/turnmarker.css"],
 	"languages": [
 		{
 			"lang": "en",
@@ -37,5 +35,5 @@
 	],
 	"url": "https://github.com/Brunhine/TurnMarker",
 	"manifest": "https://raw.githubusercontent.com/Brunhine/TurnMarker/master/src/module.json",
-	"download": "https://github.com/Brunhine/TurnMarker/releases/download/v2.6.7/turnmarker.zip"
+	"download": "https://github.com/Brunhine/TurnMarker/releases/download/v2.6.8/turnmarker.zip"
 }

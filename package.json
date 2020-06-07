@@ -1,6 +1,6 @@
 {
 	"name": "turnmarker",
-	"version": "2.6.7",
+	"version": "2.6.8",
 	"description": "",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"

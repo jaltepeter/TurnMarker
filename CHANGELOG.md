@@ -1,3 +1,11 @@
+# 2.6.8
+- Test compatibility with Foundry v0.6.2
+- Start marker if enabled will no longer show up until after a token has moved for the first time on it's turn
+- Video files (webm, ogg, & mp4) should now properly display in the marker previewer in settings
+- Added new informational window to be shown when module is updated
+- Fix harmless error when setting custom image path for turn marker 
+- Fix settings window not displaying logo
+
 # 2.6.5
 - Migrate repository from GitLab to GitHub
 - Add Webpack to reduce overall script size
