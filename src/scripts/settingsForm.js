@@ -41,7 +41,7 @@ export class SettingsForm extends FormApplication {
      */
     async _updateObject(e, d) {
         Settings.setRatio(d.ratio);
-        Settings.setImage(d.image);
+        if (d.image) Settings.setImage(d.image);
         Settings.setCustomImagePath(d.customImage);
         Settings.setShouldAnnounceTurns(d.announce);
         Settings.setIncludeAnnounceImage(d.announceImage);
