@@ -2,6 +2,7 @@ import { Chatter } from './chatter.js';
 import { Marker } from './marker.js';
 import { MarkerAnimation } from './markeranimation.js';
 import { Settings } from './settings.js';
+import { renderUpdateWindow } from './updateWindow.js';
 import { firstGM } from './utils.js';
 
 let animator;
@@ -18,6 +19,12 @@ Hooks.on('ready', async () => {
         tile.parent.sortChildren();
         if (!game.paused && Settings.getShouldAnimate()) {
             animator = MarkerAnimation.startAnimation(animator, markerId);
+        }
+    }
+
+    if (game.user.isGM) {
+        if (isNewerVersion(game.modules.get("turnmarker").data.version, Settings.getVersion())) {
+            renderUpdateWindow();
         }
     }
 });

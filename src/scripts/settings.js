@@ -2,10 +2,12 @@ import { Marker } from './marker.js';
 import { SettingsForm } from './settingsForm.js';
 import { modName } from './utils.js';
 
+const version = 'tm-version';
 const ratio = 'ratio';
 const animation = 'animation';
 const interval = 'interval';
 const announce = 'announce-turn';
+const announceAsActor = 'announce-asActor';
 const announceImage = 'announce-image';
 const image = 'image';
 const customimage = 'customimage';
@@ -30,6 +32,14 @@ export const imageTitles = [
  * Provides functionality for reading and writing module settings
  */
 export class Settings {
+
+    static getVersion() {
+        return game.settings.get(modName, version);
+    }
+
+    static setVersion(val) {
+        game.settings.set(modName, version, val);
+    }
 
     /**
      * Gets the image ratio
@@ -175,6 +185,13 @@ export class Settings {
             restricted: true,
         });
 
+        game.settings.register(modName, version, {
+            name: `${modName} version`,
+            default: '0.0.0',
+            type: String,
+            scope: 'world',
+        });
+
         game.settings.register(modName, ratio, {
             name: 'tm.settings.ratio.name',
             hint: 'tm.settings.ratio.hint',
@@ -237,6 +254,15 @@ export class Settings {
         game.settings.register(modName, announceImage, {
             name: 'tm.settings.announceImage.name',
             hint: 'tm.settings.announceImage.hint',
+            scope: 'world',
+            config: false,
+            type: Boolean,
+            default: true
+        });
+
+        game.settings.register(modName, announceAsActor, {
+            name: 'tm.settings.announceAs.name',
+            hint: 'tm.settings.announceAs.hint',
             scope: 'world',
             config: false,
             type: Boolean,
