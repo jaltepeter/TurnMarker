@@ -9,6 +9,7 @@
 	"esmodules": [
 		"scripts/turnmarker.js"
 	],
+	"socket": true,
 	"styles": [
 		"css/turnmarker.css"
 	],

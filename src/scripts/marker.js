@@ -1,6 +1,6 @@
 import { MarkerAnimation } from './markeranimation.js';
 import { Settings } from './settings.js';
-import { findTokenById } from './utils.js';
+import { findTokenById, Flags, FlagScope, socketAction, socketName } from './utils.js';
 
 /**
  * Provides functionality for creating, moving, and animating the turn marker
@@ -49,16 +49,21 @@ export class Marker {
     }
 
     /**
-     * If enabled in settings, place a "start" marker under the token where their turn started.
-     * @param {String} tokenId - The ID of the token to place the start marker under
+     * Deletes any tiles flagged as a 'Start Marker' from the canvas
      */
-    static async placeStartMarker(tokenId) {
+    static async deleteStartMarker() {
         for (var tile of canvas.scene.getEmbeddedCollection('Tile')) {
             if (tile.flags.startMarker) {
                 await canvas.scene.deleteEmbeddedEntity('Tile', tile._id);
             }
         }
+    }
 
+    /**
+     * If enabled in settings, place a "start" marker under the token where their turn started.
+     * @param {String} tokenId - The ID of the token to place the start marker under
+     */
+    static async placeStartMarker(tokenId) {
         if (Settings.getStartMarkerEnabled()) {
             let token = findTokenById(tokenId);
             let dims = this.getImageDimensions(token);
@@ -76,7 +81,15 @@ export class Marker {
                 flags: { startMarker: true }
             });
 
-            canvas.scene.createEmbeddedEntity('Tile', newTile.data);
+            if (game.user.isGM) {
+                canvas.scene.createEmbeddedEntity('Tile', newTile.data);
+                canvas.scene.setFlag(FlagScope, Flags.startMarkerPlaced, true);
+            } else {
+                game.socket.emit(socketName, {
+                    mode: socketAction.placeStartMarker,
+                    tileData: newTile.data
+                });
+            }
         }
     }
 

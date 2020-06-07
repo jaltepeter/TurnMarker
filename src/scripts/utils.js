@@ -4,6 +4,18 @@
  */
 export const modName = 'turnmarker';
 
+/*** Flag Info */
+export const FlagScope = 'turnmarker';
+export const Flags = {
+    startMarkerPlaced: 'startMarkerPlaced'
+};
+
+/** Socket Info */
+export const socketName = 'module.turnmarker';
+export const socketAction = {
+    placeStartMarker: 0
+};
+
 /**
  * Returns a token object from the canvas based on the ID value
  * @param {String} tokenId - The ID of the token to look for

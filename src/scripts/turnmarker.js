@@ -3,7 +3,7 @@ import { Marker } from './marker.js';
 import { MarkerAnimation } from './markeranimation.js';
 import { Settings } from './settings.js';
 import { renderUpdateWindow } from './updateWindow.js';
-import { firstGM } from './utils.js';
+import { firstGM, Flags, FlagScope, socketAction, socketName } from './utils.js';
 
 let animator;
 let markerId;
@@ -27,6 +27,16 @@ Hooks.on('ready', async () => {
             renderUpdateWindow();
         }
     }
+
+    game.socket.on(socketName, async (data) => {
+        if (game.user.isGM) {
+            switch (data.mode) {
+                case socketAction.placeStartMarker:
+                    await canvas.scene.createEmbeddedEntity('Tile', data.tileData);
+                    canvas.scene.setFlag(FlagScope, Flags.startMarkerPlaced, true);
+            }
+        }
+    });
 });
 
 Hooks.on('createTile', (scene, tile) => {
@@ -41,6 +51,12 @@ Hooks.on('createTile', (scene, tile) => {
     }
 });
 
+Hooks.on('preUpdateToken', async (scene, token) => {
+    if (token._id == game.combat.combatant.token._id && !canvas.scene.getFlag(FlagScope, Flags.startMarkerPlaced)) {
+        await Marker.placeStartMarker(game.combat.combatant.token._id);
+    }
+});
+
 Hooks.on('updateCombat', async (combat, update) => {
     if (combat.combatant) {
         if (update && lastTurn != combat.combatant._id && game.user.isGM && game.userId == firstGM()) {
@@ -52,7 +68,10 @@ Hooks.on('updateCombat', async (combat, update) => {
                     markerId = result.markerId;
                     animator = result.animator;
                 }
-                await Marker.placeStartMarker(combat.combatant.token._id);
+                if (Settings.getTurnMarkerEnabled()) {
+                    Marker.deleteStartMarker();
+                    canvas.scene.unsetFlag(FlagScope, Flags.startMarkerPlaced);
+                }
                 if (Settings.shouldAnnounceTurns() && !combat.combatant.hidden) {
                     Chatter.sendTurnMessage(combat.combatant);
                 }
