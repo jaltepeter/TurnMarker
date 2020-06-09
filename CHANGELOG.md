@@ -1,3 +1,6 @@
+# 2.6.9
+- Fix console error when moving token outside of combat
+
 # 2.6.8
 - Test compatibility with Foundry v0.6.2
 - Start marker if enabled will no longer show up until after a token has moved for the first time on it's turn
