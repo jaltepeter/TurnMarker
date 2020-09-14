@@ -53,9 +53,11 @@ Hooks.on('createTile', (scene, tile) => {
 
 Hooks.on('preUpdateToken', async (scene, token) => {
     if (game.combat) {
-        if (token._id == game.combat.combatant.token._id && !canvas.scene.getFlag(FlagScope, Flags.startMarkerPlaced)) {
-            await Marker.placeStartMarker(game.combat.combatant.token._id);
-        }
+        try {
+            if (token._id == game.combat.combatant.token._id && !canvas.scene.getFlag(FlagScope, Flags.startMarkerPlaced)) {
+                await Marker.placeStartMarker(game.combat.combatant.token._id);
+            }
+        } catch (err) {} // silence errors that originate from moving tokens when there is no ongoing combat
     }
 });
 
