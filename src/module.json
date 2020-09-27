@@ -31,6 +31,11 @@
 			"lang": "ja",
 			"name": " 日本語",
 			"path": "lang/ja.json"
+		},
+		{
+			"lang": "es",
+			"name": "Spanish",
+			"path": "lang/es.json"
 		}
 	],
 	"url": "https://github.com/Brunhine/TurnMarker",
