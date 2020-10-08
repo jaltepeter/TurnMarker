@@ -52,7 +52,7 @@ Hooks.on('createTile', (scene, tile) => {
 });
 
 Hooks.on('preUpdateToken', async (scene, token) => {
-    if (game.combat) {
+    if (game.combat != null && game.combat.turn != -1) {
         if (token._id == game.combat.combatant.token._id && !canvas.scene.getFlag(FlagScope, Flags.startMarkerPlaced)) {
             await Marker.placeStartMarker(game.combat.combatant.token._id);
         }
