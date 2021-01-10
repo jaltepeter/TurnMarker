@@ -2,19 +2,24 @@ import { Settings } from "./settings.js";
 
 export class Chatter {
 
-    static sendTurnMessage(combatant) {
+    static sendTurnMessage(combatant, hideNPC_name=false) {
         let players = [];
         combatant.players.forEach(player => {
             players.push(player.name);
         });
         if (players.length == 0) players.push("GM");
+        let combatantName = combatant.name;
+        if (hideNPC_name && !combatant.actor.hasPlayerOwner) {
+            combatantName = "???";
+        }
+
         ChatMessage.create({
             speaker: { actor: combatant.actor },
             //speaker: { actor: {}, alias: 'Turn Marker' },
             content:
                 `<div class="flexrow">${this.placeImage(combatant)}
                     <div style="flex: 12;">
-                        <h2>${combatant.name}'s Turn</h2>
+                        <h2>${combatantName}'s Turn</h2>
                         <p>${players.join(' - ')}</p>
                     </div>
                     </div><em>Turn Marker</em>`

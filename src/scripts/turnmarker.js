@@ -88,6 +88,9 @@ Hooks.on('updateCombat', async (combat, update) => {
                             if (!combat.combatant.actor.hasPlayerOwner) {
                                 Chatter.sendTurnMessage(combat.combatant);
                             }
+                            break;
+                        case 3:
+                            Chatter.sendTurnMessage(combat.combatant, true);
                     }
                 }
             }

@@ -33,6 +33,7 @@ export const announcedActorOptions = [
     'Announce for all',
     'Announce for players',
     'Announce for GM-controlled',
+    'Announce all but hide GM-controlled names'
 ];
 
 /**
