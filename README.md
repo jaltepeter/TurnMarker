@@ -69,7 +69,7 @@ Want to help improve the module? Send a pull request, or contact me on Discord (
 Want to show support another way? Recommend this module to other users and/or consider becoming a patron on [Patreon](https://patreon.com/brunhine "Brunhine's Patreon") or donating through [Ko-Fi](https://ko-fi.com/brunhine)
 
 ## Licensing
-**Turn Msrker** is a module for [Foundry VTT](https://foundryvtt.com/ "Foundry VTT") by Jeremiah Altepeter and is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
+**Turn Marker** is a module for [Foundry VTT](https://foundryvtt.com/ "Foundry VTT") by Jeremiah Altepeter and is licensed under a [Creative Commons Attribution 4.0 International License](http://creativecommons.org/licenses/by/4.0/).
 
 This work is licensed under Foundry Virtual Tabletop [EULA - Limited License Agreement for module development v 0.1.6](https://foundryvtt.com/article/license/).
 
