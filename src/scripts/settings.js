@@ -7,6 +7,7 @@ const ratio = 'ratio';
 const animation = 'animation';
 const interval = 'interval';
 const announce = 'announce-turn';
+const announceActors = 'announce-Actors';
 const announceAsActor = 'announce-asActor';
 const announceImage = 'announce-image';
 const image = 'image';
@@ -26,6 +27,12 @@ export const imageTitles = [
     'Runes of the Blue Sky by Rin',
     'Runes of the Universe by Rin',
     'Runes of Prosperity by Rin'
+];
+
+export const announcedActorOptions = [
+    'Announce for all',
+    'Announce for players',
+    'Announce for GM-controlled',
 ];
 
 /**
@@ -83,6 +90,23 @@ export class Settings {
      */
     static setShouldAnnounceTurns(val) {
         game.settings.set(modName, announce, val);
+    }
+
+
+    /**
+     * Gets index of setting
+     * @returns {Number} - Index number of announced
+     */
+    static getAnnounceActors() {
+        return game.settings.get(modName, announceActors);
+    }
+
+    /**
+     * Sets who sees announced turn changes
+     * @param announceActors - which owners get units announcedActorOptions, which is selected.
+     */
+    static setAnnounceActors(val) {
+        return game.settings.set(modName, announceActors, val);
     }
 
     static getIncludeAnnounceImage() {
@@ -229,6 +253,17 @@ export class Settings {
             choices: imageTitles,
             restricted: true,
             onChange: value => Marker.updateImagePath(value)
+        });
+
+        game.settings.register(modName, announceActors, {
+            name: 'tm.settings.announcedActors.name',
+            hint: 'tm.settings.announcedActors.hint',
+            scope: 'world',
+            config: false,
+            type: Number,
+            default: 0,
+            restricted: true,
+            choices: announcedActorOptions,
         });
 
         game.settings.register(modName, customimage, {

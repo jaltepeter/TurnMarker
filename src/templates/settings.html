@@ -66,6 +66,20 @@
         </div>
         <p class="notes">{{localize 'tm.settings.announceImage.hint'}}</p>
     </div>
+   <div class="form-group">
+        <!-- Announcement Actor selection-->
+        <label>{{localize 'tm.settings.announcedActors.name'}}:</label>
+        <div class="form-fields">
+            <select id="announceActors" name="announceActors">
+                {{#select announceActors}}
+                {{#each announceActors}}
+                <option value="{{@index}}" {{#if this.selected}}selected="selected" {{/if}}>{{this.value}}</option>
+                {{/each}}
+                {{/select}}
+            </select>
+        </div>
+   <p class="notes">{{localize 'tm.settings.announcedActors.hint'}}</p>
+   </div>
     <hr />
     <!--Start Marker-->
     <h2>{{localize 'tm.settings.formHeaders.startMarker'}}</h2>

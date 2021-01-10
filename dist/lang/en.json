@@ -32,6 +32,10 @@
             "image": {
                 "name": "Marker Image"
             },
+            "announcedActors": {
+                "name": "Announced Actors",
+                "hint": "Who to announce in chat"
+            },
             "customImage": {
                 "name": "Custom Image Path",
                 "hint": "Use a custom image instead (leave blank to use a built in image)"
