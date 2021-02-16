@@ -75,7 +75,23 @@ Hooks.on('updateCombat', async (combat, update) => {
                     canvas.scene.unsetFlag(FlagScope, Flags.startMarkerPlaced);
                 }
                 if (Settings.shouldAnnounceTurns() && !combat.combatant.hidden) {
-                    Chatter.sendTurnMessage(combat.combatant);
+                    switch (Settings.getAnnounceActors()){
+                        case 0:
+                            Chatter.sendTurnMessage(combat.combatant);
+                            break;
+                        case 1:
+                            if (combat.combatant.actor.hasPlayerOwner) {
+                                Chatter.sendTurnMessage(combat.combatant);
+                            }
+                            break;
+                        case 2:
+                            if (!combat.combatant.actor.hasPlayerOwner) {
+                                Chatter.sendTurnMessage(combat.combatant);
+                            }
+                            break;
+                        case 3:
+                            Chatter.sendTurnMessage(combat.combatant, true);
+                    }
                 }
             }
         }

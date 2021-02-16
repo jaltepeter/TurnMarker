@@ -1,4 +1,4 @@
-import { imageTitles, Settings } from './settings.js';
+import { imageTitles, announcedActorOptions, Settings } from './settings.js';
 
 const videos = ['mp4', 'webm', 'ogg'];
 
@@ -27,6 +27,7 @@ export class SettingsForm extends FormApplication {
             turnMarkerEnabled: Settings.getTurnMarkerEnabled(),
             ratio: Settings.getRatio(),
             image: this.getSelectList(imageTitles, Settings.getImageIndex()),
+            announceActors: this.getSelectList(announcedActorOptions, Settings.getAnnounceActors()),
             customImage: Settings.getCustomImagePath(),
             announce: Settings.shouldAnnounceTurns(),
             announceImage: Settings.getIncludeAnnounceImage(),
@@ -47,6 +48,7 @@ export class SettingsForm extends FormApplication {
         if (d.image) Settings.setImage(d.image);
         Settings.setCustomImagePath(d.customImage);
         Settings.setShouldAnnounceTurns(d.announce);
+        Settings.setAnnounceActors(d.announceActors);
         Settings.setIncludeAnnounceImage(d.announceImage);
         Settings.setTurnMarkerEnabled(d.turnMarkerEnabled);
         Settings.setStartMarkerEnabled(d.startMarkerEnabled);
